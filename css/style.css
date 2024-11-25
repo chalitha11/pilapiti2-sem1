@@ -1,0 +1,672 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*Body and Fonts*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(213, 227, 227);
+    color: blue;
+}
+/*Header*/
+/* General reset for margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main header styling */
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #87CEEB; /* Light blue background color */
+}
+
+/* Logo styling */
+.logo img {
+    height: 60px; /* Adjust logo height as needed */
+}
+
+/* Search bar styling */
+.search-bar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.search-bar input {
+    width: 100%;
+    max-width: 500px; /* Limits the search bar width */
+    padding: 8px 15px;
+    font-size: 16px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    outline: none;
+    background-color: #f0f0f0;
+}
+
+/* Header buttons styling */
+.header-buttons {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    align-items: center;
+}
+
+.header-buttons li a {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #f0f0f0; /* Light gray background for buttons */
+    color: #333;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.header-buttons .cart-btn {
+    background-color: transparent; /* Transparent background for the cart button */
+    padding: 0; /* Remove padding for cart icon */
+}
+
+.header-buttons .cart-btn img {
+    height: 35px; /* Adjust the cart icon size */
+}
+
+/* Hover effects for buttons */
+.header-buttons li a:hover {
+    background-color: #ddd; /* Slightly darker on hover */
+}
+
+
+/* Categories navigation bar styling */
+.categories {
+    background-color: #add8e6; /* Slightly different light blue for categories */
+    padding: 10px 0;
+}
+
+.categories ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+}
+
+.categories ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+.categories ul li a:hover {
+    color: #555; /* Slightly darker color on hover */
+}
+ /*New Arrivals Section*/
+/* New Arrivals Section */
+.new-arrivals, .hot-deals, .best-selling{
+    background-color: #6FA4B7;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.new-arrivals h2, .best-selling h2, .hot-deals h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.arrow {
+    font-size: 30px;
+    cursor: pointer;
+    color: #333;
+    padding: 0 10px;
+}
+
+.carousel-items {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px;
+}
+
+.book-card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    scroll-snap-align: center;
+}
+
+.book-card img {
+    width: 100%;
+    height: auto;;
+    border-bottom: 3px solid #DF8A7A;
+}
+
+.book-info {
+    padding: 10px;
+}
+
+.book-title {
+    font-weight: bold;
+    text-align: center;
+    background-color: #DF8A7A;
+    padding: 5px;
+    color: black;
+    font-size: 16px;
+}
+
+.book-details {
+    text-align: center;
+    margin-top: 10px;
+    color: #333;
+    font-size: 14px;
+}
+
+.cart-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.cart-button img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Book of the Day Styling */
+.book-of-the-day {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.book-of-the-day-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.left-panel, .right-panel {
+    background-color: #6FA4B7; /* Blue background color */
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #333;
+}
+
+.left-panel {
+    width: 150px; /* Adjust width as needed */
+    font-size: 18px;
+    color: black;
+}
+
+.book-image img {
+    width: 200px; /* Adjust as needed */
+    height: auto;
+}
+
+.right-panel {
+    width: 150px; /* Adjust width as needed */
+}
+
+.right-panel p {
+    margin: 10px 0;
+    font-size: 18px;
+    color: black;
+}
+
+.cart-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.cart-button img {
+    width: 24px;
+    height: 24px;
+}
+
+
+
+/* Special Offers Section */
+.special-offers {
+    text-align: center;
+    background-color: #ffe5b4;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.special-offers h2 {
+    color: #ff5733;
+}
+
+
+
+/* Style for individual topics with spacing */
+.topic {
+    margin-bottom: 30px; /* Adds space between each topic */
+}
+
+/* Heading styling */
+.topic h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px; /* Adds space below heading */
+}
+
+/* Paragraph styling */
+.topic p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Book list styling */
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 30px;
+    margin: 40px auto;
+    max-width: 1000px;
+}
+
+.book {
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.book img {
+    width: 100px;
+    height: 150px;
+}
+
+.book-info h2 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.cart-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 768px) {
+    .book-list {
+        grid-template-columns: 1fr; /* One column on smaller screens */
+    }
+}
+/* Popup overlay styling */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Popup content styling */
+.popup-content {
+    background: #ffffff;
+    padding: 20px;
+    max-width: 400px;
+    width: 90%;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.popup-content h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.popup-content p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Buttons within the popup */
+.popup-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup-cancel, .popup-login {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 45%;
+}
+
+.popup-cancel {
+    background-color: #ccc;
+    color: #333;
+}
+
+.popup-login {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.popup-cancel:hover {
+    background-color: #bbb;
+}
+
+.popup-login:hover {
+    background-color: #0056b3;
+}
+
+/* Login Page Container */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f4f9fc;
+    padding: 20px;
+}
+
+/* Login Form Box */
+.login-form {
+    background-color: #d7eefa;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+/* Form Heading */
+.login-form h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+/* Form Labels */
+.login-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: #000;
+}
+
+/* Form Inputs */
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Forgot Password Link */
+.forgot-password {
+    display: block;
+    margin: 10px 0;
+    font-size: 12px;
+    text-decoration: none;
+    color: #0275d8;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+
+/* Log In Button */
+.login-btn {
+    background-color: #fdd;
+}
+
+.login-btn {
+    background-color: #fdd835; /* Fix this line */
+    color: #000;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+
+
+.login-btn:hover {
+    background-color: #ffcc00;
+    color: #fff;
+}
+
+/* Create Account Section */
+.create-account {
+    margin-top: 20px;
+    text-align: center;
+    background-color: #e3e3e3;
+    padding: 10px;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.create-account p {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #000;
+}
+
+.create-link {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.create-link:hover {
+    text-decoration: underline;
+}
+/* Main Content Styling */
+.content {
+    flex: 1; /* Pushes footer to the bottom */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+}
+.form-container {
+    background-color: #d0e7f9;
+    border-radius: 15px;
+    padding: 60px;
+    width: 400px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #000;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] 
+{
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+button.login-btn {
+    background-color: #fdd835;
+    color: #000;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+
+button.login-btn:hover {
+    background-color: #fbc02d;
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #A7C8E7;
+    color: #333;
+    padding: 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+    gap: 20px;
+}
+
+.footer-section {
+    text-align: center;
+}
+
+.footer-logo {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    margin: 5px 0;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.contact-item img.icon {
+    width: 16px;
+    height: 16px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.social-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Style for info-section */
+.info-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+/* Footer Bottom Section */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    font-size: 14px;
+}
+
+.footer-links ul, .footer-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li, .footer-info ul li {
+    margin: 5px 0;
+}
+
+.footer-links ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.footer-info {
+    text-align: center;
+}
+
+.footer-payments {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-payments img {
+    width: 40px;
+    height: auto;
+}
