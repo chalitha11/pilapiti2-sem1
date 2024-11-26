@@ -16,16 +16,27 @@ if(isset($message)){
                 <div class="logo">
                     <a href="index.php"><img src="images/logo.jpeg" alt="Logo"></a> <!-- Link to Home page -->
                 </div>
-                <div class="search-bar">
-                    <input type="text" placeholder="Search here...">
-                </div>
+               
                 <ul class="header-buttons">
-                    <li><a href="about.php" class="about-btn">About Us</a></li>
-                    <li><a href="#" id="user-btn "class="user-btn">Profile</a></li>
-                    <li><a href="#" class="cart-btn" onclick="showLoginPopup()">
-                        <img src="images/grocery-store.png" alt="Cart">
-                    </a></li>
-                </ul>
+    <!-- Search Icon Button -->
+    <li>
+        <a href="#" class="search-btn">
+            <img src="images/Search.png" alt="Search" class="search-icon">
+        </a>
+    </li>
+    <!-- About Us Button -->
+    <li><a href="about.php" class="about-btn">About Us</a></li>
+    <!-- Profile Button -->
+    <li><a href="#" id="user-btn" class="user-btn"> <img src="images/user.png" alt="User" class="user-icon"><i class="fas fa-user"></i></a></li>
+    <!-- Cart Button -->
+    <li>
+        <a href="#" class="cart-btn" onclick="showLoginPopup()">
+            <img src="images/grocery-store.png" alt="Cart " class="cart-icon"> <span>(0)</span>
+        </a>
+    </li>
+</ul>
+
+                
 
                 </div>
                 <nav class="categories">

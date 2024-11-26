@@ -51,51 +51,54 @@ body {
     outline: none;
     background-color: #f0f0f0;
 }
-
-/* Header buttons styling */
+/* Header Buttons */
+/* Header Buttons */
 .header-buttons {
     display: flex;
-    list-style: none;
-    gap: 10px;
     align-items: center;
+    gap: 20px; /* Space between buttons */
 }
 
-.header-buttons li a {
+.header-buttons li {
+    list-style: none;
+}
+
+.header-buttons a {
+    text-decoration: none;
     display: flex;
     align-items: center;
-    padding: 8px 12px;
-    font-size: 14px;
-    background-color: #f0f0f0; /* Light gray background for buttons */
-    color: #333;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-}
-.header-buttons .user-btn-btn{
-    background-color: transparent;
-    padding: 0;
-
-}
-.header-buttons .user-btn img{
-    width: 30px; /* Set the width in pixels */
-    height: 20px; /* Set the height in pixels */
-  
+    justify-content: center;
+    padding: 5px;
+    width: 60px; /* Adjusted width for wider buttons */
+    height: 40px; /* Keep height consistent or adjust if needed */
+    background-color: #f9f9f9;
+    border-radius: 8px; /* Rounded corners */
+    border: 1px solid #ccc;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
-.header-buttons .cart-btn {
-    background-color: transparent; /* Transparent background for the cart button */
-    padding: 0; /* Remove padding for cart icon */
+.header-buttons a:hover {
+    background-color: #e0e0e0;
+    border-color: #6a5acd;
 }
 
-.header-buttons .cart-btn img {
-    height: 35px; /* Adjust the cart icon size */
+/* Search Icon PNG */
+.header-buttons .search-btn .search-icon {
+    width: 20px; /* Adjust icon size */
+    height: 20px;
+    display: block;
 }
 
-/* Hover effects for buttons */
-.header-buttons li a:hover {
-    background-color: #ddd; /* Slightly darker on hover */
+.header-buttons .user-btn .user-icon {
+    width: 20px; /* Adjust icon size */
+    height: 20px;
+    display: block;
 }
-
+.header-buttons .cart-btn .cart-icon {
+    width: 20px; /* Adjust icon size */
+    height: 20px;
+    display: block;
+}
 
 
 /* Categories navigation bar styling */

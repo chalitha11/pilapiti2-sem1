@@ -8,7 +8,7 @@
 
         </head>
         <body>
-            <?php include 'header.php'; ?>  
+        <?php include 'index_header.php'; ?>
 
              <main>
                 <h1 class="page-title">Fiction & Classic</h1>
