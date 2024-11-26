@@ -14,7 +14,7 @@ if(isset($message)){
         <header>
                 <div class="main-header">
                 <div class="logo">
-                    <a href="index.php"><img src="logo.jpeg" alt="Logo"></a> <!-- Link to Home page -->
+                    <a href="index.php"><img src="images/logo.jpeg" alt="Logo"></a> <!-- Link to Home page -->
                 </div>
                 <div class="search-bar">
                     <input type="text" placeholder="Search here...">
@@ -23,7 +23,7 @@ if(isset($message)){
                     <li><a href="about.php" class="about-btn">About Us</a></li>
                     <li><a href="#" class="signin-btn">Sign In/Register</a></li>
                     <li><a href="#" class="cart-btn" onclick="showLoginPopup()">
-                        <img src="grocery-store.png" alt="Cart">
+                        <img src="images/grocery-store.png" alt="Cart">
                     </a></li>
                 </ul>
                 

@@ -8,7 +8,7 @@
 
         </head>
         <body>
-            <?php include 'header.php'; ?>  
+            <?php include 'index_header.php'; ?>  
 
              <main>
                 <h1 class="page-title">Children's Books</h1>
@@ -53,7 +53,7 @@
                             <p>ISBN – 13 no:</p>
                             <p>Quantity of stock</p>
                             <p>Price</p>
-                            <button class="cart-btn" onclick="showLoginPopup()"><img src="grocery-store.png" alt="Add to Cart"></button>
+                            <button class="cart-btn" onclick="showLoginPopup()"><img src="images/grocery-store.png" alt="Add to Cart"></button>
                         </div>
                     </div>
                 </section>
@@ -69,7 +69,7 @@
                 </div>
             </div>
             
-            <?php include 'footer.php'; ?>
+            <?php include 'index_footer.php'; ?> 
       
 
          

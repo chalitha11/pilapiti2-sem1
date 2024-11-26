@@ -9,7 +9,7 @@
         </head>
         <body>
 
-        <?php include 'header.php'; ?>  
+        <?php include 'index_header.php'; ?>  
         
              <!--New Arrivals-->
              <section class="new-arrivals">
@@ -20,7 +20,7 @@
                     <div class="carousel-items">
                         <!-- Book Card 1 -->
                         <div class="book-card">
-                            <img src="sherlock.jpg" alt="Sherlock Holmes Book">
+                            <img src="images/sherlock.jpg" alt="Sherlock Holmes Book">
                             <div class="book-info">
                                 <p class="book-title">Sherlock Holmes</p>
                                 <div class="book-details">
@@ -34,7 +34,7 @@
             
                         <!-- Book Card 2 -->
                         <div class="book-card">
-                            <img src="GOT.webp" alt="Game of Thrones Book">
+                            <img src="images/GOT.webp" alt="Game of Thrones Book">
                             <div class="book-info">
                                 <p class="book-title">Game of Thrones</p>
                                 <div class="book-details">
@@ -48,7 +48,7 @@
             
                         <!-- Book Card 3 -->
                         <div class="book-card">
-                            <img src="M.jpg" alt="Matilda Book">
+                            <img src="images/M.jpg" alt="Matilda Book">
                             <div class="book-info">
                                 <p class="book-title">Matilda</p>
                                 <div class="book-details">
@@ -63,7 +63,7 @@
 
                         <!-- Book Card 4 -->
                         <div class="book-card">
-                            <img src="Dwk.jpg" alt="DWK Book">
+                            <img src="images/Dwk.jpg" alt="DWK Book">
                             <div class="book-info">
                                 <p class="book-title">Diary of the Wimpy Kid</p>
                                 <div class="book-details">
@@ -77,7 +77,7 @@
 
                             <!-- Book Card 5 -->
                             <div class="book-card">
-                                <img src="Mer.jpg" alt="Merlin Book">
+                                <img src="images/Mer.jpg" alt="Merlin Book">
                                 <div class="book-info">
                                     <p class="book-title">Merlin</p>
                                     <div class="book-details">
@@ -91,7 +91,7 @@
 
                               <!-- Book Card 6 -->
                          <div class="book-card">
-                            <img src="BL.jpeg" alt="BL Book">
+                            <img src="images/BL.jpeg" alt="BL Book">
                             <div class="book-info">
                                 <p class="book-title">Business Law</p>
                                 <div class="book-details">
@@ -106,7 +106,7 @@
 
                               <!-- Book Card 7 -->
                               <div class="book-card">
-                                <img src="KA.jpg" alt="KA Book">
+                                <img src="images/KA.jpg" alt="KA Book">
                                 <div class="book-info">
                                     <p class="book-title">King Arthur</p>
                                     <div class="book-details">
@@ -120,7 +120,7 @@
 
                              <!-- Book Card 8-->
                         <div class="book-card">
-                            <img src="Na.jpg" alt="NA Book">
+                            <img src="images/Na.jpg" alt="NA Book">
                             <div class="book-info">
                                 <p class="book-title">Naruto</p>
                                 <div class="book-details">
@@ -150,7 +150,7 @@
                     <div class="carousel-items">
                         <!-- Book Card 1 -->
                         <div class="book-card">
-                            <img src="sherlock.jpg" alt="Sherlock Holmes Book">
+                            <img src="images/sherlock.jpg" alt="Sherlock Holmes Book">
                             <div class="book-info">
                                 <p class="book-title">Sherlock Holmes</p>
                                 <div class="book-details">
@@ -164,7 +164,7 @@
             
                         <!-- Book Card 2 -->
                         <div class="book-card">
-                            <img src="GOT.webp" alt="Game of Thrones Book">
+                            <img src="images/GOT.webp" alt="Game of Thrones Book">
                             <div class="book-info">
                                 <p class="book-title">Game of Thrones</p>
                                 <div class="book-details">
@@ -178,7 +178,7 @@
             
                         <!-- Book Card 3 -->
                         <div class="book-card">
-                            <img src="M.jpg" alt="Matilda Book">
+                            <img src="images/M.jpg" alt="Matilda Book">
                             <div class="book-info">
                                 <p class="book-title">Matilda</p>
                                 <div class="book-details">
@@ -191,7 +191,7 @@
                         </div>
                          <!-- Book Card 4 -->
                          <div class="book-card">
-                            <img src="Dwk.jpg" alt="DWK Book">
+                            <img src="images/Dwk.jpg" alt="DWK Book">
                             <div class="book-info">
                                 <p class="book-title">Diary of the Wimpy Kid</p>
                                 <div class="book-details">
@@ -204,7 +204,7 @@
                         </div>
 
                         <!-- Book Card 5 -->
-                        <div class="book-card">
+                        <div class="images/book-card">
                             <img src="Mer.jpg" alt="Merlin Book">
                             <div class="book-info">
                                 <p class="book-title">Merlin</p>
@@ -218,7 +218,7 @@
                         </div>
 
                           <!-- Book Card 6 -->
-                          <div class="book-card">
+                          <div class="images/book-card">
                             <img src="BL.jpeg" alt="BL Book">
                             <div class="book-info">
                                 <p class="book-title">Business Law</p>
@@ -233,7 +233,7 @@
 
                          <!-- Book Card 7 -->
                          <div class="book-card">
-                            <img src="KA.jpg" alt="KA Book">
+                            <img src="images/KA.jpg" alt="KA Book">
                             <div class="book-info">
                                 <p class="book-title">King Arthur</p>
                                 <div class="book-details">
@@ -247,7 +247,7 @@
 
                          <!-- Book Card 8-->
                          <div class="book-card">
-                            <img src="Na.jpg" alt="NA Book">
+                            <img src="images/Na.jpg" alt="NA Book">
                             <div class="book-info">
                                 <p class="book-title">Naruto</p>
                                 <div class="book-details">
@@ -279,7 +279,7 @@
             <p>Book<br>of<br>the<br>Day</p>
         </div>
         <div class="book-image">
-            <img src="sherlock.jpg" alt="Sherlock Holmes Book">
+            <img src="images/sherlock.jpg" alt="Sherlock Holmes Book">
         </div>
         <div class="right-panel">
             <p>Title</p>
@@ -307,7 +307,7 @@
                     <div class="carousel-items">
                         <!-- Book Card 1 -->
                         <div class="book-card">
-                            <img src="sherlock.jpg" alt="Sherlock Holmes Book">
+                            <img src="images/sherlock.jpg" alt="Sherlock Holmes Book">
                             <div class="book-info">
                                 <p class="book-title">Sherlock Holmes</p>
                                 <div class="book-details">
@@ -321,7 +321,7 @@
             
                         <!-- Book Card 2 -->
                         <div class="book-card">
-                            <img src="GOT.webp" alt="Game of Thrones Book">
+                            <img src="images/GOT.webp" alt="Game of Thrones Book">
                             <div class="book-info">
                                 <p class="book-title">Game of Thrones</p>
                                 <div class="book-details">
@@ -335,7 +335,7 @@
             
                         <!-- Book Card 3 -->
                         <div class="book-card">
-                            <img src="M.jpg" alt="Matilda Book">
+                            <img src="images/M.jpg" alt="Matilda Book">
                             <div class="book-info">
                                 <p class="book-title">Matilda</p>
                                 <div class="book-details">
@@ -349,7 +349,7 @@
 
                          <!-- Book Card 4 -->
                          <div class="book-card">
-                            <img src="Dwk.jpg" alt="DWK Book">
+                            <img src="images/Dwk.jpg" alt="DWK Book">
                             <div class="book-info">
                                 <p class="book-title">Diary of the Wimpy Kid</p>
                                 <div class="book-details">
@@ -363,7 +363,7 @@
 
                         <!-- Book Card 5 -->
                         <div class="book-card">
-                            <img src="Mer.jpg" alt="Merlin Book">
+                            <img src="images/Mer.jpg" alt="Merlin Book">
                             <div class="book-info">
                                 <p class="book-title">Merlin</p>
                                 <div class="book-details">
@@ -377,7 +377,7 @@
 
                          <!-- Book Card 6 -->
                          <div class="book-card">
-                            <img src="BL.jpeg" alt="BL Book">
+                            <img src="images/BL.jpeg" alt="BL Book">
                             <div class="book-info">
                                 <p class="book-title">Business Law</p>
                                 <div class="book-details">
@@ -390,7 +390,7 @@
                         </div>
 
                          <!-- Book Card 7 -->
-                         <div class="book-card">
+                         <div class="images/book-card">
                             <img src="KA.jpg" alt="KA Book">
                             <div class="book-info">
                                 <p class="book-title">King Arthur</p>
@@ -405,7 +405,7 @@
 
                         <!-- Book Card 8-->
                         <div class="book-card">
-                            <img src="Na.jpg" alt="NA Book">
+                            <img src="images/Na.jpg" alt="NA Book">
                             <div class="book-info">
                                 <p class="book-title">Naruto</p>
                                 <div class="book-details">
@@ -441,52 +441,7 @@
 
              
 
-<!-- Footer Section -->
-<footer class="footer">
-    <div class="footer-content">
-        <!-- Logo and Address -->
-        <div class="footer-section address">
-            <img src="logo.jpeg" alt="Logo" class="footer-logo">
-            <p><strong>Address</strong></p>
-            <p>14, Moorfields, LE5 1ND</p>
-            <p>Leicester</p>
-        </div>
-
-        <!-- Hotline and Email -->
-        <div class="footer-section contact">
-            <div class="contact-item">
-                <img src="call-icon-symbol-phone-receiver-and-contact-vector-37642182.avif" alt="Phone Icon" class="icon">
-                <p><strong>Hotline</strong></p>
-                <p>07400371815</p>
-                <p> , </p>
-                <p>07508317851</p>
-            </div>
-            <div class="contact-item">
-                <img src="email.png" alt="Email Icon" class="icon">
-                <p><strong>Email</strong></p>
-                <p>ebook@gmail.com</p>
-                <p> / </p>
-                <p>ebook@yahoo.com</p>
-            </div>
-        </div>
-
-        <!-- Social Media -->
-        <div class="footer-section social-media">
-            <p><strong>Like.Follow.Share</strong></p>
-            <div class="social-icons">
-                <div class="social-icon">
-                    <img src="facebook.png" alt="Facebook Icon">
-                    <p>Facebook</p>
-                </div>
-                <div class="social-icon">
-                    <img src="instagram.png" alt="Instagram Icon">
-                    <p>Instagram</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <?php include 'footer.php'; ?>
+            <?php include 'index_footer.php'; ?> 
 
 <script src="js/function.js"></script>
 
@@ -499,4 +454,4 @@
             
         </body>
     </html>
-</html>
+
