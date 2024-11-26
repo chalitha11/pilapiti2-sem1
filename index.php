@@ -25,8 +25,8 @@
                                 <p class="book-title">Sherlock Holmes</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                    <button class="cart-button">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -39,8 +39,8 @@
                                 <p class="book-title">Game of Thrones</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £30</p>
-                                    <button class="cart-button"onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                    <button class="cart-button">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -53,8 +53,8 @@
                                 <p class="book-title">Matilda</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £20</p>
-                                    <button class="cart-button"onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                    <button class="cart-button">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -68,8 +68,8 @@
                                 <p class="book-title">Diary of the Wimpy Kid</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £25</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                    <button class="cart-button">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -82,8 +82,8 @@
                                     <p class="book-title">Merlin</p>
                                     <div class="book-details">
                                         <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                        <button class="cart-button" onclick="showLoginPopup()">
-                                            <img src="grocery-store.png" alt="Cart Icon">
+                                        <button class="cart-button">
+                                            <img src="images/grocery-store.png" alt="Cart Icon">
                                         </button>
                                     </div>
                                 </div>
@@ -96,8 +96,8 @@
                                 <p class="book-title">Business Law</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                    <button class="cart-button">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -111,8 +111,8 @@
                                     <p class="book-title">King Arthur</p>
                                     <div class="book-details">
                                         <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £55</p>
-                                        <button class="cart-button" onclick="showLoginPopup()">
-                                            <img src="grocery-store.png" alt="Cart Icon">
+                                        <button class="cart-button">
+                                            <img src="images/grocery-store.png" alt="Cart Icon">
                                         </button>
                                     </div>
                                 </div>
@@ -125,8 +125,8 @@
                                 <p class="book-title">Naruto</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £55</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                    <button class="cart-button">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -155,8 +155,8 @@
                                 <p class="book-title">Sherlock Holmes</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                    <button class="cart-button">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -169,8 +169,8 @@
                                 <p class="book-title">Game of Thrones</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £30</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                    <button class="cart-button">
+                                        <img src="images/grocery-store.png"alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -183,8 +183,8 @@
                                 <p class="book-title">Matilda</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £20</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                    <button class="cart-button">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -196,36 +196,36 @@
                                 <p class="book-title">Diary of the Wimpy Kid</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £25</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                    <button class="cart-button">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Book Card 5 -->
-                        <div class="images/book-card">
-                            <img src="Mer.jpg" alt="Merlin Book">
+                        <div class="book-card">
+                            <img src="images/Mer.jpg" alt="Merlin Book">
                             <div class="book-info">
                                 <p class="book-title">Merlin</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                    <button class="cart-button">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
                         </div>
 
                           <!-- Book Card 6 -->
-                          <div class="images/book-card">
-                            <img src="BL.jpeg" alt="BL Book">
+                          <div class="book-card">
+                            <img src="images/BL.jpeg" alt="BL Book">
                             <div class="book-info">
                                 <p class="book-title">Business Law</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                    <button class="cart-button">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -238,8 +238,8 @@
                                 <p class="book-title">King Arthur</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £55</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                    <button class="cart-button">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -252,8 +252,8 @@
                                 <p class="book-title">Naruto</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £55</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                    <button class="cart-button">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -284,7 +284,7 @@
         <div class="right-panel">
             <p>Title</p>
             <p>Price</p>
-            <button class="cart-button" onclick="showLoginPopup()">
+            <button class="cart-button">
                 <img src="images/grocery-store.png" alt="Cart Icon">
             </button>
         </div>
@@ -312,7 +312,7 @@
                                 <p class="book-title">Sherlock Holmes</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
+                                    <button class="cart-button">
                                         <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
@@ -326,7 +326,7 @@
                                 <p class="book-title">Game of Thrones</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £30</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
+                                    <button class="cart-button">
                                         <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
@@ -340,7 +340,7 @@
                                 <p class="book-title">Matilda</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £20</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
+                                    <button class="cart-button">
                                         <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
@@ -354,7 +354,7 @@
                                 <p class="book-title">Diary of the Wimpy Kid</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £25</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
+                                    <button class="cart-button">
                                         <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
@@ -368,7 +368,7 @@
                                 <p class="book-title">Merlin</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
+                                    <button class="cart-button">
                                         <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
@@ -382,7 +382,7 @@
                                 <p class="book-title">Business Law</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
+                                    <button class="cart-button">
                                         <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
@@ -390,13 +390,13 @@
                         </div>
 
                          <!-- Book Card 7 -->
-                         <div class="images/book-card">
-                            <img src="KA.jpg" alt="KA Book">
+                         <div class="book-card">
+                            <img src="images/KA.jpg" alt="KA Book">
                             <div class="book-info">
                                 <p class="book-title">King Arthur</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £55</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
+                                    <button class="cart-button">
                                         <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
@@ -410,7 +410,7 @@
                                 <p class="book-title">Naruto</p>
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £55</p>
-                                    <button class="cart-button" onclick="showLoginPopup()">
+                                    <button class="cart-button">
                                         <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
@@ -428,17 +428,7 @@
                 </div>
             </section>
 
-            <div id="loginPopup" class="popup-overlay">
-                <div class="popup-content">
-                    <h2>Please Log In</h2>
-                    <p>If you have an account already, please log in or else please create an account.</p>
-                    <div class="popup-buttons">
-                        <button class="popup-cancel" onclick="closeLoginPopup()">Cancel</button>
-                        <button class="popup-login" onclick="redirectToLogin()">Log In</button>
-                    </div>
-                </div>
-            </div>
-
+            
              
 
             <?php include 'index_footer.php'; ?> 

@@ -20,7 +20,7 @@
                             <p>ISBN – 13 no:</p>
                             <p>Quantity of stock</p>
                             <p>Price</p>
-                            <button class="cart-btn" onclick="showLoginPopup()"><img src="images/grocery-store.png" alt="Add to Cart"></button>
+                            <button class="cart-btn"><img src="images/grocery-store.png" alt="Add to Cart"></button>
                         </div>
                     </div>
             
@@ -31,7 +31,7 @@
                             <p>ISBN – 13 no:</p>
                             <p>Quantity of stock</p>
                             <p>Price</p>
-                            <button class="cart-btn" onclick="showLoginPopup()"><img src="images/grocery-store.png" alt="Add to Cart"></button>
+                            <button class="cart-btn"><img src="images/grocery-store.png" alt="Add to Cart"></button>
                         </div>
                     </div>
             
@@ -42,7 +42,7 @@
                             <p>ISBN – 13 no:</p>
                             <p>Quantity of stock</p>
                             <p>Price</p>
-                            <button class="cart-btn" onclick="showLoginPopup()"><img src="images/grocery-store.png" alt="Add to Cart"></button>
+                            <button class="cart-btn"><img src="images/grocery-store.png" alt="Add to Cart"></button>
                         </div>
                     </div>
             
@@ -53,21 +53,12 @@
                             <p>ISBN – 13 no:</p>
                             <p>Quantity of stock</p>
                             <p>Price</p>
-                            <button class="cart-btn" onclick="showLoginPopup()"><img src="images/grocery-store.png" alt="Add to Cart"></button>
+                            <button class="cart-btn"><img src="images/grocery-store.png" alt="Add to Cart"></button>
                         </div>
                     </div>
                 </section>
             </main>
-            <div id="loginPopup" class="popup-overlay">
-                <div class="popup-content">
-                    <h2>Please Log In</h2>
-                    <p>If you have an account already, please log in or else please create an account.</p>
-                    <div class="popup-buttons">
-                        <button class="popup-cancel" onclick="closeLoginPopup()">Cancel</button>
-                        <button class="popup-login" onclick="redirectToLogin()">Log In</button>
-                    </div>
-                </div>
-            </div>
+            
             
             <?php include 'index_footer.php'; ?> 
 

@@ -55,33 +55,34 @@ if(isset($message)){
                 
              </header>
              <main class="content">
+    <div class="form-container">
+        <h1>Create Account</h1>
+        <form action="" method="POST">
+            <label for="tName">First Name</label>
+            <input type="text" id="name" name="name" required>
 
-             <div class="form-container">
-                <h1>Create Account</h1>
-                <form action="" method="POST">
-                    <label for="tName">First Name</label>
-                    <input type="text" id="name" name="name" required>
-        
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                    
-                    <label for="password">Password</label>
-                    <input type="password" id="pass" name="pass" placeholder="at least 6 characters" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
 
-                    <label for="cpassword">confirm your password</label>
-                    <input type="password" id="cpass" name="cpass" placeholder="at least 6 characters" required>
+            <label for="password">Password</label>
+            <input type="password" id="pass" name="pass" placeholder="at least 6 characters" required>
 
-                    <label for="text">User Type</label>
-                    <select name="user_type" class="box">
-                      <option value="user">user</option>
-                      <option value="admin">admin</option>
-                    </select>
-        
-                    <button type="submit" name="submit" class="login-btn">Sign In</button>
-                </form>
-            </div>
-             </main>
-   
+            <label for="cpassword">Confirm Your Password</label>
+            <input type="password" id="cpass" name="cpass" placeholder="at least 6 characters" required>
+
+            <label for="user_type">User Type</label>
+            <select name="user_type" class="box" id="user-type">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select>
+
+            <button type="submit" name="submit" class="login-btn">Sign In</button>
+        </form>
+    </div>
+</main>
+
+
+            
 
  
 <script src="js/function.js"></script>

@@ -99,6 +99,48 @@ body {
     height: 20px;
     display: block;
 }
+/* Popup Styling */
+.user-popup {
+    position: absolute;
+    top: 80px; /* Adjust depending on the header height */
+    right: 20px; /* Align with the User button */
+    width: 250px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    display: none; /* Hidden by default */
+    z-index: 1000;
+}
+
+.user-popup p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.user-popup strong {
+    font-weight: bold;
+    color: #6a5acd;
+}
+
+.user-popup button {
+    display: block;
+    width: 100%;
+    background-color: #b71c1c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.user-popup button:hover {
+    background-color: #d32f2f;
+}
 
 
 /* Categories navigation bar styling */
@@ -503,7 +545,6 @@ body {
     background-color: #ffcc00;
     color: #fff;
 }
-
 /* Create Account Section */
 .create-account {
     margin-top: 20px;
@@ -530,65 +571,65 @@ body {
 .create-link:hover {
     text-decoration: underline;
 }
-/* Main Content Styling */
+/* Container styling */
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Uniform spacing for all form elements */
+form label {
+    display: block;
+    margin-bottom: 8px; /* Space between label and input */
+    font-weight: bold;
+    color: #333;
+}
+
+form input, 
+form select,
+form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px; /* Equal gap between all form elements */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Button styling */
+.login-btn {
+    background-color: #fdd835;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background-color: #ffc107;
+}
+
+/* Heading Styling */
+h1 {
+    text-align: center;
+    margin-bottom: 30px; /* Add consistent spacing below the heading */
+    font-size: 24px;
+    color: #000;
+}
+
+/* Main content area */
 .content {
-    flex: 1; /* Pushes footer to the bottom */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 60px;
-}
-.form-container {
-    background-color: #d0e7f9;
-    border-radius: 15px;
-    padding: 60px;
-    width: 400px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-h1 {
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: bold;
-    color: #000;
-}
-
-label {
-    font-size: 14px;
-    font-weight: bold;
-    margin-top: 10px;
-    display: block;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] 
-{
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    box-sizing: border-box;
-}
-
-button.login-btn {
-    background-color: #fdd835;
-    color: #000;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100%;
-}
-
-button.login-btn:hover {
-    background-color: #fbc02d;
+    min-height: 100vh;
+    background-color: #e8f4f8;
 }
 
 /* Footer Styling */
