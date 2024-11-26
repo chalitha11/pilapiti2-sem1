@@ -20,7 +20,7 @@
                             <p>ISBN – 13 no:</p>
                             <p>Quantity of stock</p>
                             <p>Price</p>
-                            <button class="cart-btn" onclick="showLoginPopup()"><img src="grocery-store.png" alt="Add to Cart"></button>
+                            <button class="cart-btn" onclick="showLoginPopup()"><img src="images/grocery-store.png" alt="Add to Cart"></button>
                         </div>
                     </div>
             
@@ -31,7 +31,7 @@
                             <p>ISBN – 13 no:</p>
                             <p>Quantity of stock</p>
                             <p>Price</p>
-                            <button class="cart-btn" onclick="showLoginPopup()"><img src="grocery-store.png" alt="Add to Cart"></button>
+                            <button class="cart-btn" onclick="showLoginPopup()"><img src="images/grocery-store.png" alt="Add to Cart"></button>
                         </div>
                     </div>
             
@@ -42,7 +42,7 @@
                             <p>ISBN – 13 no:</p>
                             <p>Quantity of stock</p>
                             <p>Price</p>
-                            <button class="cart-btn" onclick="showLoginPopup()"><img src="grocery-store.png" alt="Add to Cart"></button>
+                            <button class="cart-btn" onclick="showLoginPopup()"><img src="images/grocery-store.png" alt="Add to Cart"></button>
                         </div>
                     </div>
             
@@ -53,7 +53,7 @@
                             <p>ISBN – 13 no:</p>
                             <p>Quantity of stock</p>
                             <p>Price</p>
-                            <button class="cart-btn" onclick="showLoginPopup()"><img src="grocery-store.png" alt="Add to Cart"></button>
+                            <button class="cart-btn" onclick="showLoginPopup()"><img src="images/grocery-store.png" alt="Add to Cart"></button>
                         </div>
                     </div>
                 </section>

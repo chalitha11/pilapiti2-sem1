@@ -14,13 +14,13 @@
                 <h1 class="page-title">Children's Books</h1>
                 <section class="book-list">
                     <div class="book">
-                        <img src="Dwk.jpg" alt="Dwk book">
+                        <img src="images/Dwk.jpg" alt="Dwk book">
                         <div class="book-info">
                             <h2>Diary of the Wimpy Kid</h2>
                             <p>ISBN – 13 no:</p>
                             <p>Quantity of stock</p>
                             <p>Price</p>
-                            <button class="cart-btn" onclick="showLoginPopup()"><img src="grocery-store.png" alt="Add to Cart"></button>
+                            <button class="cart-btn" onclick="showLoginPopup()"><img src="images/grocery-store.png" alt="Add to Cart"></button>
                         </div>
                     </div>
             
@@ -31,18 +31,18 @@
                             <p>ISBN – 13 no:</p>
                             <p>Quantity of stock</p>
                             <p>Price</p>
-                            <button class="cart-btn" onclick="showLoginPopup()"><img src="grocery-store.png" alt="Add to Cart"></button>
+                            <button class="cart-btn" onclick="showLoginPopup()"><img src="images/grocery-store.png" alt="Add to Cart"></button>
                         </div>
                     </div>
             
                     <div class="book">
-                        <img src="Mer.jpg" alt="M book">
+                        <img src="images/Mer.jpg" alt="M book">
                         <div class="book-info">
                             <h2>Merlin</h2>
                             <p>ISBN – 13 no:</p>
                             <p>Quantity of stock</p>
                             <p>Price</p>
-                            <button class="cart-btn" onclick="showLoginPopup()"><img src="grocery-store.png" alt="Add to Cart"></button>
+                            <button class="cart-btn" onclick="showLoginPopup()"><img src="images/grocery-store.png" alt="Add to Cart"></button>
                         </div>
                     </div>
             

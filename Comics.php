@@ -14,7 +14,7 @@
                 <h1 class="page-title">Comics</h1>
                 <section class="book-list">
                     <div class="book">
-                        <img src="Dwk.jpg" alt="Dwk book">
+                        <img src="images/Dwk.jpg" alt="Dwk book">
                         <div class="book-info">
                             <h2>Diary of the Wimpy Kid</h2>
                             <p>ISBN – 13 no:</p>
@@ -25,7 +25,7 @@
                     </div>
             
                     <div class="book">
-                        <img src="KA.jpg" alt="KA">
+                        <img src="images/KA.jpg" alt="KA">
                         <div class="book-info">
                             <h2>King Arthur</h2>
                             <p>ISBN – 13 no:</p>
@@ -36,7 +36,7 @@
                     </div>
             
                     <div class="book">
-                        <img src="Mer.jpg" alt="M book">
+                        <img src="images/Mer.jpg" alt="M book">
                         <div class="book-info">
                             <h2>Merlin</h2>
                             <p>ISBN – 13 no:</p>
@@ -47,7 +47,7 @@
                     </div>
             
                     <div class="book">
-                        <img src="Na.jpg" alt="NA Book">
+                        <img src="images/Na.jpg" alt="NA Book">
                         <div class="book-info">
                             <h2>Naruto</h2>
                             <p>ISBN – 13 no:</p>

@@ -285,7 +285,7 @@
             <p>Title</p>
             <p>Price</p>
             <button class="cart-button" onclick="showLoginPopup()">
-                <img src="grocery-store.png" alt="Cart Icon">
+                <img src="images/grocery-store.png" alt="Cart Icon">
             </button>
         </div>
     </div>
@@ -313,7 +313,7 @@
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
                                     <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -327,7 +327,7 @@
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £30</p>
                                     <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -341,7 +341,7 @@
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £20</p>
                                     <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -355,7 +355,7 @@
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £25</p>
                                     <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -369,7 +369,7 @@
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
                                     <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -383,7 +383,7 @@
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
                                     <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -397,7 +397,7 @@
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £55</p>
                                     <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -411,7 +411,7 @@
                                 <div class="book-details">
                                     <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £55</p>
                                     <button class="cart-button" onclick="showLoginPopup()">
-                                        <img src="grocery-store.png" alt="Cart Icon">
+                                        <img src="images/grocery-store.png" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
