@@ -10,8 +10,8 @@ if(isset($message)){
    }
 }
 ?>
-   <!-- Header Section-->
-        <header>
+    <!-- Header Section-->
+    <header>
                 <div class="main-header">
                 <div class="logo">
                     <a href="index.php"><img src="images/logo.jpeg" alt="Logo"></a> <!-- Link to Home page -->
@@ -21,12 +21,12 @@ if(isset($message)){
                 </div>
                 <ul class="header-buttons">
                     <li><a href="about.php" class="about-btn">About Us</a></li>
-                    <li><a href="#" class="signin-btn">Sign In/Register</a></li>
+                    <li><a href="#" id="user-btn "class="user-btn">Profile</a></li>
                     <li><a href="#" class="cart-btn" onclick="showLoginPopup()">
                         <img src="images/grocery-store.png" alt="Cart">
                     </a></li>
                 </ul>
-                
+
                 </div>
                 <nav class="categories">
                     <ul>
@@ -38,5 +38,5 @@ if(isset($message)){
                         <li><a href="fiction.php">Fiction & Classic</a></li>
                     </ul>
                 </nav>
-                
+                 
          </header>

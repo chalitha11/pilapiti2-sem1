@@ -12,6 +12,7 @@ body {
 }
 /*Header*/
 /* General reset for margins and padding */
+
 * {
     margin: 0;
     padding: 0;
@@ -70,6 +71,17 @@ body {
     text-decoration: none;
     font-weight: bold;
 }
+.header-buttons .user-btn-btn{
+    background-color: transparent;
+    padding: 0;
+
+}
+.header-buttons .user-btn img{
+    width: 30px; /* Set the width in pixels */
+    height: 20px; /* Set the height in pixels */
+  
+}
+
 .header-buttons .cart-btn {
     background-color: transparent; /* Transparent background for the cart button */
     padding: 0; /* Remove padding for cart icon */
@@ -83,6 +95,7 @@ body {
 .header-buttons li a:hover {
     background-color: #ddd; /* Slightly darker on hover */
 }
+
 
 
 /* Categories navigation bar styling */

@@ -31,6 +31,8 @@
             <div class="topic">
                 <h2>Contact Us</h2>
                 <p>If you have any questions, feedback, or need assistance, don’t hesitate to get in touch! Our customer support team is here to help you with any inquiries or issues you may encounter. Reach us by email, phone, or visit our store in person.</p>
+                <section class="contact">
+
             </div>
         </section>
     </main>
