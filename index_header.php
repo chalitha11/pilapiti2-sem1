@@ -20,14 +20,14 @@ if(isset($message)){
                 <ul class="header-buttons">
     <!-- Search Icon Button -->
     <li>
-        <a href="#" class="search-btn">
+        <a href="search_books.php" class="search-btn">
             <img src="images/Search.png" alt="Search" class="search-icon">
         </a>
     </li>
     <!-- About Us Button -->
     <li><a href="about.php" class="about-btn">About Us</a></li>
     <!-- Profile Button -->
-    <li><a href="#" id="user-btn" class="user-btn"> <img src="images/user.png" alt="User" class="user-icon"><i class="fas fa-user"></i></a></li>
+    <li><a href="#" id="user-btn" class="user-btn"> <img src="images/user.png" alt="User" class="user-icon"></a></li>
     <!-- Cart Button -->
     <li>
         <a href="#" class="cart-btn">
@@ -37,8 +37,9 @@ if(isset($message)){
 </ul>
 <!-- Popup Window -->
 <div id="user-popup" class="user-popup">
-    <p><strong>Username:</strong> <span id="username">Chalitha</span></p>
-    <p><strong>Email:</strong> <span id="email">chpilapitiya@gmail.com</span></p>
+    <p><strong>Username:</strong> <span id="username"><?php echo $_SESSION['user_name']; ?></p>
+    <p><strong>Email:</strong> <span id="email"><?php echo $_SESSION['user_email']; ?></span></p>
+    <button id="order_btn" onclick="window.location.href='order.php'">order</button>
     <button id="logout-btn">Logout</button>
 </div>
 
