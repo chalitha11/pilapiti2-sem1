@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,26 +10,33 @@
 </head>
 <body>
     
-<header><div class="mainlogo">
+<header>
+    <div class="admin-header">
+        <!-- Reduced-size logo -->
         <div class="logo">
-            <a href="admin_index.php"><span><img src="images/logo.jpeg"></span>
-            <span class="me"></span></a>
-        </div><p>Admin Pannel</p></div>
-        <div class="nav">
-            <a href="admin_index.php">Home</a>
-            <a href="add_books.php">Add Books</a>
-            <a href="admin_orders.php">Orders</a>
-            <a href="message_admin.php">Message</a>
-            <a href="users_detail.php">Users</a>
-
+            <a href="admin_index.php">
+                <img src="images/logo.jpeg" alt="Bookstore Logo">
+            </a>
         </div>
+        <p class="admin-title">Admin Panel</p>
+        
+        <!-- Navigation Menu -->
+        <nav class="nav">
+            <a href="admin_index.php" class="active">Home</a>
+            <a href="add_books.php">Add Stock</a>
+            <a href="admin_orders.php">Orders</a>
+            <a href="users_detail.php">Users</a>
+        </nav>
+        
+        <!-- Greeting and Logout -->
         <div class="right">
             <div class="log_info">
-                <p>Hello <?php echo $_SESSION['admin_name'];?></p> 
+                <p>Hello <?php echo $_SESSION['admin_name']; ?></p>
             </div>
-            <a class="Btn" href="logout.php?logout=<?php echo $_SESSION['admin_name'];?>">logout</a>
+            <a class="logout-btn" href="logout.php?logout=<?php echo $_SESSION['admin_name']; ?>">Logout</a>
         </div>
-    </header>
+    </div>
+</header>
 
 </body>
 </html>

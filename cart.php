@@ -34,57 +34,11 @@ if(isset($_POST['update'])){
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="css/hello.css">
+    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
-    <style>
-        .cart-btn1,.cart-btn2{
-            
-            display: inline-block;
-   margin: auto;
-   padding:0.8rem 1.2rem;
-   cursor: pointer;
-   color:white;
-   font-size: 15px;
-   border-radius: .5rem;
-   text-transform: capitalize;
-        }
-        .cart-btn1{
-            margin-left: 40%;
-            background-color: #ffa41c;
-            color: black;
-        }
-        .cart-btn2{
-            background-color: rgb(0, 167, 245);
-            color: black;
-        }
-        .message {
-  position: sticky;
-  top: 0;
-  margin: 0 auto;
-  width: 61%;
-  background-color: #fff;
-  padding: 6px 9px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 100;
-  gap: 0px;
-  border: 2px solid rgb(68, 203, 236);
-  border-top-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-}
-.message span {
-  font-size: 22px;
-  color: rgb(240, 18, 18);
-  font-weight: 400;
-}
-.message i {
-  cursor: pointer;
-  color: rgb(3, 227, 235);
-  font-size: 15px;
-}
-    </style>
+   
 </head>
 
 <body>
@@ -102,15 +56,65 @@ if(isset($_POST['update'])){
       }
     }
     ?>
-        <table style="width: 70%; align-items:center; margin:10px auto;" >
-            <thead>
-                <th>Image</th>
-                <th>Name</th>
-                <th>price</th>
-                <th>Quatity</th>
-                <th>Total (₹)</th>
-            </thead>
-            <tbody>
+    <main>
+    <a href="#" class="back-to-cart"><< Back to Home</a>
+
+    <section class="order-summary">
+      <h2>Order Summary</h2>
+      <div class="item">
+        <img src="images/GOT.webp" alt="Item Image">
+        <p>Title</p>
+        <p>Quantity</p>
+        <p>Unit Price</p>
+      </div>
+      <div class="item">
+        <img src="images/Mer.jpg" alt="Item Image">
+        <p>Title</p>
+        <p>Quantity</p>
+        <p>Unit Price</p>
+      </div>
+    </section>
+
+    <section class="address">
+      <h2>Address</h2>
+      <form>
+        <input type="text" placeholder="Street no">
+        <input type="text" placeholder="Full Name">
+        <textarea placeholder="Address Line"></textarea>
+        <input type="email" placeholder="Email">
+        <input type="text" placeholder="Post Code">
+        <input type="text" placeholder="Phone Number">
+      </form>
+    </section>
+
+    <section class="payment-method">
+      <h2>Payment Method</h2>
+      <div class="payment-options">
+        <label><input type="radio" name="payment"> <img src="images/money.png" alt="MasterCard"></label>
+        <label><input type="radio" name="payment"> <img src="images/symbols.png" alt="American Express"></label>
+        <label><input type="radio" name="payment"> <img src="images/visa.png" alt="Visa"></label>
+      </div>
+    </section>
+
+    <section class="price">
+      <h2>Price</h2>
+      <p>1. Item 01 $100</p>
+      <p>2. Item 02 $100</p>
+      <p>Shipping cost $100</p>
+    </section>
+
+    <section class="payment-details">
+      <form>
+        <input type="text" placeholder="Card Number">
+        <input type="text" placeholder="Expiry Date">
+        <input type="text" placeholder="Name">
+        <input type="text" placeholder="CVV">
+        <button type="submit">Pay now</button>
+      </form>
+    </section>
+
+  </main>
+   
                 
                 <?php
                 $total = 0;
@@ -138,25 +142,26 @@ if(isset($_POST['update'])){
                             <td><?php $sub_total=$row['price']*$row['quantity']; echo $subtotal=number_format($row['price']*$row['quantity']); ?></td>
                             </tr>
 
-                <?php
-                $total += $sub_total;
-                    }
-                } else {
-                    echo '<p class="empty">There is nothing in cart yet !!!!!!!!</p>';
-                }
-                ?>
-                <tr>
-                    <th style="text-align:center;" colspan="3">Total</th>
-                    <th colspan="2">₹ <?php echo $total; ?>/- </th>
-
-                </tr>
-                
-                
-            </tbody>
-        </table>
-        <a href="checkout.php" class="btn cart-btn1" style="display:<?php if($total>1){ echo 'inline-block'; }else{ echo 'none'; };?>" > &nbsp; Proceed to Checkout</a> <a class="cart-btn2" href="index.php">Continue Shoping</a>
+                            <div class="cart-frame">
+    <?php
+    $total += $sub_total;
+        }
+    } else {
+        echo '<p class="empty">There is nothing in cart yet !!!!!!!!</p>';
+    }
+    ?>
+    <div class="cart-total-container">
+    <div class="cart-total">
+        <p>Total ₹ <?php echo $total; ?>/-</p>
     </div>
-    <?php include'index_footer.php'; ?>
+    <a href="checkout.php" class="btn cart-btn1" 
+        style="display:<?php if($total > 1){ echo 'inline-block'; }else{ echo 'none'; };?>"> 
+        Proceed to Checkout
+    </a>
+    <a class="cart-btn2" href="index.php">Continue Shopping</a>
+</div>
+<?php include 'index_footer.php'; ?> 
+
     
     <script>
 setTimeout(() => {
@@ -170,3 +175,4 @@ setTimeout(() => {
 </body>
 
 </html>
+

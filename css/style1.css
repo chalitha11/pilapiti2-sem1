@@ -1,0 +1,335 @@
+
+.back-to-cart {
+    display: block;
+    margin: 10px 20px;
+    color: blue;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  
+  .back-to-cart:hover {
+    text-decoration: underline;
+  }
+  
+  .order-summary {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+  }
+  
+  .order-summary h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .order-summary .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .order-summary .item img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .order-summary .item p {
+    flex: 1;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .address {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+  }
+  
+  .address h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .address form input,
+  .address form textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .address form textarea {
+    resize: vertical;
+    height: 100px;
+  }
+  
+  .payment-method {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+  }
+  
+  .payment-method h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .payment-method .payment-options {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .payment-method .payment-options label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .payment-method .payment-options img {
+    width: 40px;
+    height: auto;
+    margin-left: 5px;
+  }
+  
+  .price {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+  }
+  
+  .price h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .price p {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  
+  .payment-details {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+  }
+  
+  .payment-details form input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .payment-details button {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .payment-details button:hover {
+    background-color: darkblue;
+  }
+
+  /* Styling for the empty cart message */
+.empty {
+  text-align: center;
+  font-size: 20px;
+  color: #FF5733; /* Bright orange color */
+  font-weight: bold;
+  margin: 20px 0;
+  text-shadow: 1px 1px 2px #000; /* Add slight shadow for emphasis */
+}
+
+/* Styling for the total amount and continue shopping link */
+.cart-summary {
+  text-align: center;
+  font-size: 18px;
+  margin: 10px 0;
+  color: #2E86C1; /* Vibrant blue */
+}
+
+.cart-summary span.total {
+  font-weight: bold;
+  color: #28B463; /* Green for the total amount */
+}
+
+.cart-summary a {
+  color: #8E44AD; /* Purple for the link */
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 2px solid #8E44AD; /* Underline effect */
+  transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+.cart-summary a:hover {
+  color: #D35400; /* Change color on hover */
+  border-bottom: 2px solid #D35400;
+  text-decoration: underline;
+  transform: scale(1.1); /* Slight zoom-in effect */
+}
+/* Centering the entire cart frame */
+.cart-frame {
+    display: flex;
+    flex-direction: column; /* Aligns items in a column */
+    justify-content: center; /* Centers vertically */
+    align-items: center; /* Centers horizontally */
+    min-height: 50vh; /* Ensures the frame takes at least half the viewport height */
+    padding: 20px;
+    background-color: #f9f9f9; /* Optional background for the frame */
+    border-radius: 10px; /* Smooth rounded corners */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for emphasis */
+    text-align: center; /* Ensures text is centered */
+  }
+  
+  /* Styling for the empty cart message */
+  .empty {
+    font-size: 24px; /* Larger text for visibility */
+    color: #FF5733; /* Bright orange */
+    font-weight: bold;
+    margin: 10px 0;
+    text-shadow: 1px 1px 2px #000; /* Slight shadow */
+  }
+  
+  /* Styling for the total amount */
+  .cart-total {
+    font-size: 20px; /* Slightly larger text */
+    font-weight: bold;
+    color: #28B463; /* Green color */
+    margin: 10px 0;
+  }
+  
+  /* Styling for the buttons */
+  .btn.cart-btn1 {
+    display: inline-block;
+    background-color: #3498DB;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 10px 5px; /* Adjust space between buttons */
+    transition: all 0.3s ease;
+  }
+  
+  .btn.cart-btn1:hover {
+    background-color: #2E86C1;
+    transform: scale(1.1);
+  }
+  
+  .cart-btn2 {
+    color: #8E44AD;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid #8E44AD;
+    transition: all 0.3s ease;
+  }
+  
+  .cart-btn2:hover {
+    color: #D35400;
+    border-bottom: 2px solid #D35400;
+    transform: scale(1.1);
+  }
+  /* Container for the total and buttons */
+.cart-total-container {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
+  min-height: 30vh; /* Optional: Adjust the height to fit content */
+  padding: 20px;
+  background-color: #f0f8ff; /* Light blue background for emphasis */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Add shadow for a 3D effect */
+  text-align: center;
+  gap: 15px; /* Add spacing between elements */
+}
+
+/* Styling for the total amount text */
+.cart-total p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50; /* Darker color for contrast */
+  margin: 0; /* Remove default margins */
+  text-shadow: 1px 1px 2px #dcdcdc; /* Subtle shadow for text */
+}
+
+/* Button for Proceed to Checkout */
+.btn.cart-btn1 {
+  display: inline-block;
+  background-color: #3498DB;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(52, 152, 219, 0.5); /* Button shadow */
+}
+
+.btn.cart-btn1:hover {
+  background-color: #2E86C1;
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Link for Continue Shopping */
+.cart-btn2 {
+  color: #8E44AD;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 2px solid #8E44AD;
+  transition: all 0.3s ease;
+}
+
+.cart-btn2:hover {
+  color: #D35400; /* Change color on hover */
+  border-bottom: 2px solid #D35400;
+  transform: scale(1.1); /* Slight enlargement on hover */
+}
+/* Heading Styling */
+h1 {
+    text-align: center;
+    margin-bottom: 30px; /* Add consistent spacing below the heading */
+    font-size: 24px;
+    color: #000;
+}
+
+/* Main content area */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #e8f4f8;
+}

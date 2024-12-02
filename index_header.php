@@ -30,7 +30,7 @@ if(isset($message)){
     <li><a href="#" id="user-btn" class="user-btn"> <img src="images/user.png" alt="User" class="user-icon"></a></li>
     <!-- Cart Button -->
     <li>
-        <a href="#" class="cart-btn">
+        <a href="cart.php" class="cart-btn">
             <img src="images/grocery-store.png" alt="Cart " class="cart-icon"> <span>(0)</span>
         </a>
     </li>
