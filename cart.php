@@ -57,7 +57,7 @@ if(isset($_POST['update'])){
     }
     ?>
     <main>
-    <a href="#" class="back-to-cart"><< Back to Home</a>
+    <a href="index.php" class="back-to-cart"><< Back to Home</a>
 
     <section class="order-summary">
       <h2>Order Summary</h2>

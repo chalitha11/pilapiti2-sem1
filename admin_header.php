@@ -25,7 +25,6 @@
             <a href="admin_index.php" class="active">Home</a>
             <a href="add_books.php">Add Stock</a>
             <a href="admin_orders.php">Orders</a>
-            <a href="users_detail.php">Users</a>
         </nav>
         
         <!-- Greeting and Logout -->

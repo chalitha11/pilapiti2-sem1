@@ -1,226 +1,336 @@
 <?php
-include 'config.php';
-
+require_once 'config.php';
 session_start();
 
-// Ensure the admin is logged in
-/*if (!isset($_SESSION['admin_id'])) {
+// Redirect if not logged in as admin
+if (!isset($_SESSION['admin_id'])) {
     header('location:login.php');
     exit;
 }
 
-$admin_id = $_SESSION['admin_id'];*/
+$admin_id = $_SESSION['admin_id'];
 
-// Add a book
-if (isset($_POST['add_books'])) {
+function handleAddBook($conn) {
+    $requiredFields = ['bid', 'bname', 'btitle', 'bpublished_date', 'category', 'price', 'bdesc', 'image'];
+    foreach ($requiredFields as $field) {
+        if (empty($_POST[$field]) && (!isset($_FILES['image']) || empty($_FILES['image']['name']))) {
+            return ['All fields are required!'];
+        }
+    }
+
     $bid = mysqli_real_escape_string($conn, $_POST['bid']);
     $bname = mysqli_real_escape_string($conn, $_POST['bname']);
     $btitle = mysqli_real_escape_string($conn, $_POST['btitle']);
     $bpublished_date = mysqli_real_escape_string($conn, $_POST['bpublished_date']);
     $category = mysqli_real_escape_string($conn, $_POST['category']);
-    $price = $_POST['price'];
+    $price = (float)$_POST['price'];
     $desc = mysqli_real_escape_string($conn, $_POST['bdesc']);
-    $img = $_FILES["image"]["name"];
-    $img_temp_name = $_FILES["image"]["tmp_name"];
-    $img_file = "./added_books/" . $img;
+    $image = $_FILES['image'];
 
-    // Input validation
-    if (empty($bid) || empty($bname) || empty($btitle) || empty($bpublished_date) || empty($price) || empty($category) || empty($desc) || empty($img)) {
-        $message[] = 'All fields are required!';
-    } elseif (!is_numeric($price) || $price < 0) {
-        $message[] = 'Price must be a positive number!';
-    } elseif ($_FILES['image']['size'] > 2000000) {
-        $message[] = 'Image size is too large!';
-    } else {
-        // Check if the book already exists
-        $check_book_query = mysqli_query($conn, "SELECT * FROM `book_info` WHERE bid = '$bid'");
-        if (mysqli_num_rows($check_book_query) > 0) {
-            $message[] = 'Book with this ISBN already exists!';
-        } else {
-            // Insert the new book
-            $add_book_query = "INSERT INTO `book_info`(`bid`, `name`, `title`, `published_date`, `price`, `category`, `description`, `image`) 
-                               VALUES('$bid', '$bname', '$btitle', '$bpublished_date', '$price', '$category', '$desc', '$img')";
-
-            if (mysqli_query($conn, $add_book_query)) {
-                move_uploaded_file($img_temp_name, $img_file);
-                $message[] = 'New book added successfully!';
-            } else {
-                $message[] = 'Failed to add the book!';
-            }
-        }
+    if ($price <= 0) {
+        return ['Price must be a positive number!'];
     }
+    if ($image['size'] > 2000000) {
+        return ['Image size is too large!'];
+    }
+
+    $checkBookQuery = $conn->prepare("SELECT * FROM book_info WHERE bid = ?");
+    $checkBookQuery->bind_param("s", $bid);
+    $checkBookQuery->execute();
+    $result = $checkBookQuery->get_result();
+
+    if ($result->num_rows > 0) {
+        return ['Book with this ISBN already exists!'];
+    }
+
+    $imgFilePath = './added_books/' . $image['name'];
+    $addBookQuery = $conn->prepare("INSERT INTO book_info (bid, name, title, published_date, price, category, description, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $addBookQuery->bind_param("ssssisss", $bid, $bname, $btitle, $bpublished_date, $price, $category, $desc, $image['name']);
+
+    if ($addBookQuery->execute()) {
+        move_uploaded_file($image['tmp_name'], $imgFilePath);
+        return ['New book added successfully!'];
+    }
+    return ['Failed to add the book!'];
 }
 
-// Delete a book
-if (isset($_GET['delete'])) {
-    $delete_id = $_GET['delete'];
-    $delete_query = "DELETE FROM `book_info` WHERE bid = '$delete_id'";
-    if (mysqli_query($conn, $delete_query)) {
-        header('location:add_books.php');
-        exit;
-    } else {
-        $message[] = 'Failed to delete the book!';
-    }
+
+// Handle delete request
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['delete'])) {
+  $deleteId = $_GET['delete'];
+  $deleteQuery = $conn->prepare("DELETE FROM book_info WHERE bid = ?");
+  $deleteQuery->bind_param("s", $deleteId);
+  if ($deleteQuery->execute()) {
+      $messages[] = "Book deleted successfully!";
+  } else {
+      $messages[] = "Failed to delete the book!";
+  }
+  $deleteQuery->close();
 }
 
-// Update a book
-if (isset($_POST['update_product'])) {
-    $update_p_id = $_POST['update_p_id'];
-    $update_name = mysqli_real_escape_string($conn, $_POST['update_name']);
-    $update_title = mysqli_real_escape_string($conn, $_POST['update_title']);
-    $update_published_date = mysqli_real_escape_string($conn, $_POST['update_published_date']);
-    $update_description = mysqli_real_escape_string($conn, $_POST['update_description']);
-    $update_price = $_POST['update_price'];
-    $update_category = mysqli_real_escape_string($conn, $_POST['update_category']);
-    $update_image = $_FILES['update_image']['name'];
-    $update_image_tmp_name = $_FILES['update_image']['tmp_name'];
-    $update_image_size = $_FILES['update_image']['size'];
-    $update_folder = './added_books/' . $update_image;
-    $update_old_image = $_POST['update_old_image'];
+// Handle update request
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_book'])) {
+  $updateId = $_POST['update_id'];
+  $updateName = mysqli_real_escape_string($conn, $_POST['update_name']);
+  $updateTitle = mysqli_real_escape_string($conn, $_POST['update_title']);
+  $updatePublishedDate = mysqli_real_escape_string($conn, $_POST['update_published_date']);
+  $updateDescription = mysqli_real_escape_string($conn, $_POST['update_description']);
+  $updatePrice = (float)$_POST['update_price'];
+  $updateCategory = mysqli_real_escape_string($conn, $_POST['update_category']);
 
-    // Update the book details
-    $update_query = "UPDATE `book_info` SET 
-                     `name` = '$update_name', 
-                     `title` = '$update_title', 
-                     `published_date` = '$update_published_date', 
-                     `description` = '$update_description', 
-                     `price` = '$update_price', 
-                     `category` = '$update_category' 
-                     WHERE `bid` = '$update_p_id'";
+  $updateQuery = $conn->prepare(
+      "UPDATE book_info SET name = ?, title = ?, published_date = ?, description = ?, price = ?, category = ? WHERE bid = ?"
+  );
+  $updateQuery->bind_param("ssssiss", $updateName, $updateTitle, $updatePublishedDate, $updateDescription, $updatePrice, $updateCategory, $updateId);
 
-    if (mysqli_query($conn, $update_query)) {
-        if (!empty($update_image)) {
-            if ($update_image_size > 2000000) {
-                $message[] = 'Image size is too large!';
-            } else {
-                $update_image_query = "UPDATE `book_info` SET `image` = '$update_image' WHERE `bid` = '$update_p_id'";
-                if (mysqli_query($conn, $update_image_query)) {
-                    move_uploaded_file($update_image_tmp_name, $update_folder);
-                    unlink('./added_books/' . $update_old_image); // Remove old image
-                }
-            }
-        }
-        header('location:add_books.php');
-        exit;
-    } else {
-        $message[] = 'Failed to update the book!';
-    }
+  if ($updateQuery->execute()) {
+      $messages[] = "Book updated successfully!";
+  } else {
+      $messages[] = "Failed to update the book!";
+  }
+  $updateQuery->close();
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/admin.css">
-  <title>Add Books</title>
-</head>
-
-<body>
-  <?php include './admin_header.php'; ?>
-
-  <?php
-  if (isset($message)) {
-    foreach ($message as $msg) {
-      echo '<div class="message" id="messages"><span>' . htmlspecialchars($msg) . '</span></div>';
-    }
-  }
-  ?>
-
-  <a class="update_btn" style="position: fixed; z-index: 100;" href="total_books.php">See All Books</a>
-
-  <div class="container_box">
-    <form action="" method="POST" enctype="multipart/form-data">
-      <h3>Add Books To <a href="index.php"><span>Book</span> <span>Store</span></a></h3>
-      <input type="text" name="bid" placeholder="Enter book ISBN Number" class="text_field" required>
-      <input type="text" name="bname" placeholder="Enter book Name" class="text_field" required>
-      <input type="text" name="btitle" placeholder="Enter Author name" class="text_field" required>
-      <input type="text" name="bpublished_date" placeholder="Enter Published Date" class="text_field" required>
-      <input type="number" min="0" name="price" class="text_field" placeholder="Enter book price" required>
-      <select name="category" class="text_field" required>
-        <option value="Adventure">Adventure</option>
-        <option value="Magic">Magic</option>
-        <option value="Knowledge">Knowledge</option>
-      </select>
-      <textarea name="bdesc" placeholder="Enter book description" class="text_field" cols="18" rows="5" required></textarea>
-      <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" class="text_field" required>
-      <input type="submit" value="Add Book" name="add_books" class="btn text_field">
-    </form>
-  </div>
-
-  <section class="show-products">
-    <div class="box-container">
-      <?php
-      $stmt = $conn->prepare("SELECT * FROM book_info ORDER BY date DESC LIMIT 2");
-      $stmt->execute();
-      $result = $stmt->get_result();
-
-      if ($result->num_rows > 0) {
-        while ($book = $result->fetch_assoc()) {
-          echo '<div class="box">';
-          echo '<img class="books_images" src="added_books/' . htmlspecialchars($book['image']) . '" alt="Book Image">';
-          echo '<div class="name">Author: ' . htmlspecialchars($book['title']) . '</div>';
-          echo '<div class="name">Name: ' . htmlspecialchars($book['name']) . '</div>';
-          echo '<div class="price">Price: ₹ ' . htmlspecialchars($book['price']) . '/-</div>';
-          echo '<a href="add_books.php?update=' . htmlspecialchars($book['bid']) . '" class="update_btn">Update</a>';
-          echo '<a href="add_books.php?delete=' . htmlspecialchars($book['bid']) . '" class="delete_btn" onclick="return confirm(\'Delete this book?\');">Delete</a>';
-          echo '</div>';
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
         }
-      } else {
-        echo '<p class="empty">No products added yet!</p>';
-      }
-      ?>
-    </div>
-  </section>
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        form {
+            margin: 20px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-group button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background: #0056b3;
+        }
+        .messages {
+            color: red;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #f4f4f4;
+        }
 
-  <section class="edit-product-form">
-    <?php
-    if (isset($_GET['update'])) {
-      $update_id = $_GET['update'];
-      $stmt = $conn->prepare("SELECT * FROM book_info WHERE bid = ?");
-      $stmt->bind_param("s", $update_id);
-      $stmt->execute();
-      $result = $stmt->get_result();
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            z-index: 1000;
+        }
+        .popup.active {
+            display: block;
+        }
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        .popup-overlay.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<?php include'admin_header.php';?>
+    <div class="container">
+        <h1>Book Management</h1>
 
-      if ($result->num_rows > 0) {
-        $book = $result->fetch_assoc();
-        ?>
-        <form action="" method="post" enctype="multipart/form-data">
-          <input type="hidden" name="update_p_id" value="<?php echo htmlspecialchars($book['bid']); ?>">
-          <input type="hidden" name="update_old_image" value="<?php echo htmlspecialchars($book['image']); ?>">
-          <img src="./added_books/<?php echo htmlspecialchars($book['image']); ?>" alt="Book Image">
-          <input type="text" name="update_name" value="<?php echo htmlspecialchars($book['name']); ?>" class="box" required placeholder="Enter Book Name">
-          <input type="text" name="update_title" value="<?php echo htmlspecialchars($book['title']); ?>" class="box" required placeholder="Enter Author Name">
-          <select name="update_category" class="text_field" required>
-            <option value="Adventure" <?php echo ($book['category'] == 'Adventure') ? 'selected' : ''; ?>>Adventure</option>
-            <option value="Magic" <?php echo ($book['category'] == 'Magic') ? 'selected' : ''; ?>>Magic</option>
-            <option value="Knowledge" <?php echo ($book['category'] == 'Knowledge') ? 'selected' : ''; ?>>Knowledge</option>
-          </select>
-          <textarea name="update_description" class="box" required placeholder="Enter book description"><?php echo htmlspecialchars($book['description']); ?></textarea>
-          <input type="number" name="update_price" value="<?php echo htmlspecialchars($book['price']); ?>" min="0" class="box" required placeholder="Enter book price">
-          <input type="file" class="box" name="update_image" accept="image/jpg, image/jpeg, image/png">
-          <input type="submit" value="Update" name="update_product" class="delete_btn">
-          <input type="reset" value="Cancel" id="close-update" class="update_btn">
+        <?php if (!empty($messages)): ?>
+            <div class="messages">
+                <?php foreach ($messages as $message): ?>
+                    <p><?= htmlspecialchars($message) ?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <!-- Add Book Form -->
+        <h2>Add a New Book</h2>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="bid">ISBN:</label>
+                <input type="text" name="bid" id="bid" required>
+            </div>
+            <div class="form-group">
+                <label for="bname">Book Name:</label>
+                <input type="text" name="bname" id="bname" required>
+            </div>
+            <div class="form-group">
+                <label for="btitle">Author:</label>
+                <input type="text" name="btitle" id="btitle" required>
+            </div>
+            <div class="form-group">
+                <label for="bpublished_date">Published Date:</label>
+                <input type="date" name="bpublished_date" id="bpublished_date" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select name="category" id="category" required>
+                    <option value="Fiction">Fiction</option>
+                    <option value="Non-Fiction">Non-Fiction</option>
+                    <option value="Biography">Biography</option>
+                    <option value="Science">Science</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" name="price" id="price" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="bdesc">Description:</label>
+                <textarea name="bdesc" id="bdesc" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image">Image:</label>
+                <input type="file" name="image" id="image" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" name="add_books">Add Book</button>
+            </div>
         </form>
-    <?php
-      } else {
-        echo '<p class="empty">Book not found!</p>';
-      }
-    }
-    ?>
-  </section>
 
-  <script src="js/admin.js"></script>
-  <script>
-    setTimeout(() => {
-      const box = document.getElementById('messages');
-      if (box) box.style.display = 'none';
-    }, 8000);
-  </script>
+        <!-- Display Books -->
+        <?php foreach ($messages as $msg): ?>
+        <div class="message" id="messages"><span><?= htmlspecialchars($msg); ?></span></div>
+    <?php endforeach; ?>
+
+    <section class="show-products">
+        <div class="box-container">
+            <?php
+            $stmt = $conn->prepare("SELECT * FROM book_info ORDER BY date DESC");
+            if ($stmt) {
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    while ($book = $result->fetch_assoc()) {
+                        ?>
+                        <div class="box">
+                            <img class="books_images" src="added_books/<?= htmlspecialchars($book['image']); ?>" alt="Book Image">
+                            <div class="name">Author: <?= htmlspecialchars($book['title']); ?></div>
+                            <div class="name">Name: <?= htmlspecialchars($book['name']); ?></div>
+                            <div class="price">Price: ₹ <?= htmlspecialchars($book['price']); ?>/-</div>
+                            <button class="update_btn" onclick="openUpdatePopup(<?= htmlspecialchars(json_encode($book)); ?>)">Update</button>
+                            <a href="add_books.php?delete=<?= htmlspecialchars($book['bid']); ?>" class="delete_btn" onclick="return confirm('Delete this book?');">Delete</a>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    echo '<p class="empty">No books found!</p>';
+                }
+                $stmt->close();
+            }
+            ?>
+        </div>
+    </section>
+
+    <!-- Update Pop-up -->
+    <div class="popup-overlay" id="popup-overlay"></div>
+    <div class="popup" id="update-popup">
+        <form action="" method="POST">
+            <h3>Update Book</h3>
+            <input type="hidden" name="update_id" id="update-id">
+            <input type="text" name="update_name" id="update-name" class="box" required placeholder="Enter Book Name">
+            <input type="text" name="update_title" id="update-title" class="box" required placeholder="Enter Author Name">
+            <input type="text" name="update_published_date" id="update-published-date" class="box" required placeholder="Enter Published Date">
+            <select name="update_category" id="update-category" class="box" required>
+                <option value="Adventure">Adventure</option>
+                <option value="Magic">Magic</option>
+                <option value="Knowledge">Knowledge</option>
+            </select>
+            <textarea name="update_description" id="update-description" class="box" required placeholder="Enter book description"></textarea>
+            <input type="number" name="update_price" id="update-price" class="box" required placeholder="Enter book price" min="0">
+            <input type="submit" value="Update" name="update_book" class="btn">
+            <button type="button" class="btn" onclick="closePopup()">Cancel</button>
+        </form>
+    </div>
+
+    <script>
+        function openUpdatePopup(book) {
+            document.getElementById('update-id').value = book.bid;
+            document.getElementById('update-name').value = book.name;
+            document.getElementById('update-title').value = book.title;
+            document.getElementById('update-published-date').value = book.published_date;
+            document.getElementById('update-category').value = book.category;
+            document.getElementById('update-description').value = book.description;
+            document.getElementById('update-price').value = book.price;
+
+            document.getElementById('popup-overlay').classList.add('active');
+            document.getElementById('update-popup').classList.add('active');
+        }
+
+        function closePopup() {
+            document.getElementById('popup-overlay').classList.remove('active');
+            document.getElementById('update-popup').classList.remove('active');
+        }
+    </script>
+    </div>
 </body>
-
 </html>
+
