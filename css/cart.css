@@ -1,0 +1,66 @@
+body{ 
+
+   background-color: #6495d4;
+}
+/* General styling for the cart page container */
+.small-container {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* Styling for the cart table */
+.cart-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.cart-page th, .cart-page td {
+    border: 1px solid #616cd1;
+    padding: 8px;
+    text-align: left;
+}
+
+.cart-page th {
+    color: #fff;
+    background-color: #6778c5;
+}
+
+/* Styling for the card-info container within the table */
+.cart-page .card-info {
+    display: flex;
+    align-items: center;
+}
+
+.cart-page img {
+    width: 80px;
+    margin-right: 10px;
+}
+
+.cart-page p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.cart-page small {
+    color: #666;
+}
+
+
+/* Styling for the quantity input */
+.cart-page input[type="number"] {
+    width: 40px;
+    padding: 6px;
+    text-align: center;
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 600px) {
+    .cart-page th, .cart-page td {
+        font-size: 14px;
+    }
+
+    .cart-page img {
+        width: 60px;
+    }
+}

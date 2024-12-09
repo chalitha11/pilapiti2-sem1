@@ -1,104 +1,87 @@
 <?php
-
-include 'config.php';
+@include 'configDatabase.php';
 session_start();
 
-if(isset($_POST['submit'])){
-
-   $email = mysqli_real_escape_string($conn, $_POST['email']);
-   $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
-
-   $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$pass'") or die('query failed');
-
-   if(mysqli_num_rows($select_users) > 0){
-
-      $row = mysqli_fetch_assoc($select_users);
-
-      if($row['user_type'] == 'admin'){
-
-         $_SESSION['admin_name'] = $row['name'];
-         $_SESSION['admin_email'] = $row['email'];
-         $_SESSION['admin_id'] = $row['id'];
-         header('location:admin_index.php');
-
-      }elseif($row['user_type'] == 'user'){
-
-         $_SESSION['user_name'] = $row['name'];
-         $_SESSION['user_email'] = $row['email'];
-         $_SESSION['user_id'] = $row['id'];
-         header('location:index.php');
-
-      }
-
-   }else{
-      $message[] = 'incorrect email or password!';
-   }
-
+// Function to sanitize(avoiding spaces between the words) user input
+function sanitizeInput($data)
+{
+    global $conn;  // Access the global connection variable
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $conn->real_escape_string($data);
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	
+	$inputEmail = $_POST['email'];  
+	$inputPassword = $_POST['password'];  //get user input
+	
+	$query = "SELECT * FROM user WHERE email = ? LIMIT 1";
+	$stmt = $conn->prepare($query);
+	$stmt->bind_param("s", $inputEmail);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	
+	if ($result->num_rows > 0) {
+		$row = $result->fetch_assoc();
+		// Verify the password(below password_verify function can  be decrypt the password)
+		if (password_verify($inputPassword, $row['password'])) {
+			// Passwords match
+			$_SESSION['user_id'] = $row['userID']; 
+			$_SESSION['user_type'] = $row['userType']; 
+			$_SESSION['user_name'] = $row['uname'];
+			$_SESSION['gender'] = $row['gender']; //pass to header to display Mrs or Mr
+	
+			if (isset($_SESSION['user_id'])) {
+				// Assuming you have already started the session
+				$userID = $_SESSION['user_id'];
+	
+				header("Location: index.php");
+				exit();
+			}
+		} else {
+			// Passwords do not match, login failed
+			echo "<script>";
+			echo "alert('Invalid Password!');";
+			echo "</script>";
+		}
+	} else {
+		// No matching user found, login failed
+		echo "<script>";
+		echo "alert('Invalid E-mail!');";
+		echo "</script>";
+	}
+	
+	
+	
+}
+
+
+$conn->close();
 ?>
-
-
-
-
-<!DOCTYPE html>
-    <html lang="en">
-        <head>
-         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bookstore</title>
-        <link rel="stylesheet" href="css/style.css">
-        
-        <?php
-           if(isset($message)){
-               foreach($message as $message){
-                   echo '
-                     <div class="message">
-                       <span>'.$message.'</span>
-                           <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
-                     </div>
-                   ';
-               }
-            }
-        ?>
-
-             <div class="login-container">
-                <div class="login-form">
-                    <h2>Log IN</h2>
-                    <form action="" method="post">
-                        <!-- Email Input -->
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
-        
-                        <!-- Password Input -->
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="pass" placeholder="Enter your password" required>
-        
-                        <!-- Forgot Password -->
-                        <a href="#" class="forgot-password">forgot password?</a>
-        
-                        <!-- Submit Button -->
-                        <button type="submit" name="submit" class="login-btn">Log IN</button>
-                    </form>
-                </div>
-        
-                <!-- Create Account Section -->
-                <div class="create-account">
-                    <p>If you don’t have an account already……</p>
-                    <a href="register.php" class="create-link">Create one...</a>
-                </div>
-            </div>
-
-
-<script src="js/function.js"></script>
-
-
-
-
-
-        
-
-            
-        </body>
-    </html>
+<html>
+<head>
+  	<title>Login</title>
+  	<link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+	<link href="css/signup.css" rel="stylesheet" type="text/css">
+  	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="background">
+		<div class="shape"></div>
+		<div class="shape"></div>
+	</div>
+	<form class="signform" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+		<h3>Login Here</h3>
+		<input type="email" name="email" placeholder="Enter E-mail" required>   
+		<input type="Password" name="password" placeholder="Enter Password"  required >
+		<div class="text-center">
+			<input type="submit" name="action" class="submit bg-primary">
+			<br><br>
+			<a href="signup.php">sign up</a>
+		</div>
+    </form>
+	
+</body>
 </html>

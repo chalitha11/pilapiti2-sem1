@@ -1,460 +1,432 @@
 <?php
+@include 'configDatabase.php';
+@include 'header.php';
+ $userID = $_SESSION['user_id'];
 
-include 'config.php';
-session_start();
-$user_id = $_SESSION['user_id'];
+ // Fetching All books from the cart where userID = loged userID
+ $queryCart = "SELECT *
+ FROM book
+ JOIN cart ON book.bookID = cart.bookID
+ WHERE cart.userID = $userID  
+ ORDER BY cart.cartID DESC;";
 
-if(!isset($user_id)){
-   header('location:login.php');
+ $resultcart = $conn->query($queryCart);
+
+ $cart = [];
+ if ($resultcart->num_rows > 0) {
+	 while ($rowcart = $resultcart->fetch_assoc()) {
+		 $cart[] = $rowcart;
+	 }
+ }
+// Fetching New Arival from the database
+$queryNewArrival = "SELECT * FROM book ORDER BY bookID DESC LIMIT 6;";
+$resultNewArrival = $conn->query($queryNewArrival);
+
+$booksNewArrival = [];
+if ($resultNewArrival->num_rows > 0) {
+    while ($rowNewArrival = $resultNewArrival->fetch_assoc()) {
+        $booksNewArrival[] = $rowNewArrival;
+    }
 }
 
+// Fetching Novel from the database
+$queryNovel = "SELECT * FROM book 	WHERE btype='Novels' ORDER BY bookID DESC LIMIT 6;";
+$resultNovel = $conn->query($queryNovel);
 
+$booksNovel = [];
+if ($resultNovel->num_rows > 0) {
+    while ($rowNovel = $resultNovel->fetch_assoc()) {
+        $booksNovel[] = $rowNovel;
+    }
+}
+// Fetching Short story from the database
+$queryShort = "SELECT * FROM book WHERE btype='ShortStory' ORDER BY bookID DESC LIMIT 6;";
+$resultShort = $conn->query($queryShort);
+
+$booksShort = [];
+if ($resultShort->num_rows > 0) {
+    while ($rowShort = $resultShort->fetch_assoc()) {
+        $booksShort[] = $rowShort;
+    }
+}
+// Fetching Fantasy books from the database
+$queryFantasy = "SELECT * FROM book WHERE btype='Fantasy' ORDER BY bookID DESC LIMIT 6;";
+$resultFantasy = $conn->query($queryFantasy);
+
+$booksFantacy = [];
+if ($resultFantasy->num_rows > 0) {
+    while ($rowFantasy = $resultFantasy->fetch_assoc()) {
+        $booksFantacy[] = $rowFantasy;
+    }
+}
+// Fetching Thriller books from the database
+$queryThriller = "SELECT * FROM book WHERE btype='Thriller' ORDER BY bookID DESC LIMIT 6;";
+$resultThriller = $conn->query($queryThriller);
+
+$booksThriller = [];
+if ($resultThriller->num_rows > 0) {
+    while ($rowThriller = $resultThriller->fetch_assoc()) {
+        $booksThriller[] = $rowThriller;
+    }
+}
+// Fetching Fiction books from the database
+$queryFiction = "SELECT * FROM book WHERE btype='Fiction' ORDER BY bookID DESC LIMIT 6;";
+$resultFiction = $conn->query($queryFiction);
+
+$booksFiction = [];
+if ($resultFiction->num_rows > 0) {
+    while ($rowFiction = $resultFiction->fetch_assoc()) {
+        $booksFiction[] = $rowFiction;
+    }
+}
+//Adding books to cart table 
+if(isset($_POST['add_to_cart'])){
+	$bookID = $_POST["bookID"];
+	
+	   $insert_cart_sql = "INSERT INTO `cart`(bookID, userID) VALUES($bookID, $userID)";
+	   if ($conn->query($insert_cart_sql) === TRUE) {
+		echo '<script>';
+		echo 'alert("add to cart success!");';
+		echo '</script>';
+		header("Location:cart.php");
+	   }
+	   else{
+		echo '<script>';
+		echo 'alert("add to cart fail!");';
+		echo '</script>';
+	   }
+ }
+$conn->close();
 ?>
 
-<!DOCTYPE html>
-    <html lang="en">
-        <head>
-         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bookstore</title>
-        <link rel="stylesheet" href="css/style.css">
+<!DOCTYPE html><html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+	<link href="css/indexStyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body style="padding-top: 73px">
+  	
+		<!---Carousel--->
+		<div id="video-carousel-example" class="carousel slide carousel-fade" data-bs-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-bs-target="#video-carousel-example" data-bs-slide-to="0" class="active"></li>
+				<li data-bs-target="#video-carousel-example" data-bs-slide-to="1"></li>
+				<li data-bs-target="#video-carousel-example" data-bs-slide-to="2"></li>
+			</ol>
 
-        </head>
-        <body>
+			<div class="carousel-inner" role="listbox">
+				<div class="carousel-item active" style="height: 600px;">
+					<img src="images/carousel1.png" class="d-block w-100" alt="Image 1">
+				</div>
 
-        <?php include 'index_header.php'; ?>  
-        
-             <!--New Arrivals-->
-             <section class="new-arrivals">
-                <h2>New Arrivals</h2>
-                <div class="carousel">
-                    <div class="arrow left-arrow">&#10094;</div> <!-- Left arrow -->
-                    
-                    <div class="carousel-items">
-                        <!-- Book Card 1 -->
-                        <div class="book-card">
-                            <img src="images/sherlock.jpg" alt="Sherlock Holmes Book">
-                            <div class="book-info">
-                                <p class="book-title">Sherlock Holmes</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Book Card 2 -->
-                        <div class="book-card">
-                            <img src="images/GOT.webp" alt="Game of Thrones Book">
-                            <div class="book-info">
-                                <p class="book-title">Game of Thrones</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £30</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Book Card 3 -->
-                        <div class="book-card">
-                            <img src="images/M.jpg" alt="Matilda Book">
-                            <div class="book-info">
-                                <p class="book-title">Matilda</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £20</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        
+				<div class="carousel-item" style="height: 600px;">
+					<img src="images/carousel2.JPG" class="d-block w-100" alt="Image 2">
+				</div>
 
-                        <!-- Book Card 4 -->
-                        <div class="book-card">
-                            <img src="images/Dwk.jpg" alt="DWK Book">
-                            <div class="book-info">
-                                <p class="book-title">Diary of the Wimpy Kid</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £25</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+				<div class="carousel-item" style="height: 600px;">
+					<img src="images/carousel3.png" class="d-block w-100" alt="Image 3">
+				</div>
+			</div>
 
-                            <!-- Book Card 5 -->
-                            <div class="book-card">
-                                <img src="images/Mer.jpg" alt="Merlin Book">
-                                <div class="book-info">
-                                    <p class="book-title">Merlin</p>
-                                    <div class="book-details">
-                                        <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                        <button class="cart-button">
-                                            <img src="images/grocery-store.png" alt="Cart Icon">
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+			<a class="carousel-control-prev" href="#video-carousel-example" role="button" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			</a>
+			
+		</div>
+	<!-- included js for carousel moving and fading -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<br><br>
 
-                              <!-- Book Card 6 -->
-                         <div class="book-card">
-                            <img src="images/BL.jpeg" alt="BL Book">
-                            <div class="book-info">
-                                <p class="book-title">Business Law</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+	<!--- products categories--->
+	
+  	<div class="container" style="margin-top:70px;">
+		<h2 class="category_name">New Arrival</h2>
+	  	<hr class="hr-category">
+	    <div class="row">
+		<?php foreach ($booksNovel as $book): ?>
+		<?php $isInCart = false; ?>
+		<?php foreach ($cart as $cartItem): ?>
+			<?php if ($book['bookID'] == $cartItem['bookID']): ?>
+				<?php $isInCart = true; ?>
+				<?php break; ?>
+			<?php endif; ?>
+		<?php endforeach; ?>
+
+		<div class="col-md-2">
+			<div class="card col-md-13"> 
+				<img src="<?php echo $book['bimage']; ?>">
+				
+				<div class="card-body">
+					<h5 class="card-title"><?php echo $book['bname']; ?></h5>
+					<p class="card-text"><?php echo $book['bauthor']; ?></p>
+					<p class="card-price">LKR : <?php echo $book['bprice']; ?>.00/=</p>
+					<div class="">
+						<?php if (!$isInCart): ?>
+							<form action="" method="POST">
+								<input type="hidden" name="bookID" value="<?php echo $book['bookID']; ?>"/>
+								<input type="submit" class="btn btn-primary" value="Add to cart" name="add_to_cart">
+							</form>
+							<?php else: ?>
+							<input type="submit" class="btn btn-danger" value="Added" name="add_to_cart" disabled>
+						<?php endif; ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php endforeach; ?>
 
 
-                              <!-- Book Card 7 -->
-                              <div class="book-card">
-                                <img src="images/KA.jpg" alt="KA Book">
-                                <div class="book-info">
-                                    <p class="book-title">King Arthur</p>
-                                    <div class="book-details">
-                                        <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £55</p>
-                                        <button class="cart-button">
-                                            <img src="images/grocery-store.png" alt="Cart Icon">
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+		</div>	  
+      	<br><br><br>
 
-                             <!-- Book Card 8-->
-                        <div class="book-card">
-                            <img src="images/Na.jpg" alt="NA Book">
-                            <div class="book-info">
-                                <p class="book-title">Naruto</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £55</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        
-                            
-                    
-                        
-            
-                    <div class="arrow right-arrow">&#10095;</div> <!-- Right arrow -->
-                </div>
-            </section>
+		<h2 class="category_name">Novels</h2>
+	  	<hr class="hr-category">
+	    <div class="row">
+			<?php foreach ($booksNovel as $book): ?>
+			<?php $isInCart = false; ?>
+			<?php foreach ($cart as $cartItem): ?>
+				<?php if ($book['bookID'] == $cartItem['bookID']): ?>
+					<?php $isInCart = true; ?>
+					<?php break; ?>
+				<?php endif; ?>
+			<?php endforeach; ?>
 
-             <!--Best Selling-->
-             <section class="best-selling">
-                <h2>Best Selling Books</h2>
-                <div class="carousel">
-                    <div class="arrow left-arrow">&#10094;</div> <!-- Left arrow -->
-                    
-                    <div class="carousel-items">
-                        <!-- Book Card 1 -->
-                        <div class="book-card">
-                            <img src="images/sherlock.jpg" alt="Sherlock Holmes Book">
-                            <div class="book-info">
-                                <p class="book-title">Sherlock Holmes</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Book Card 2 -->
-                        <div class="book-card">
-                            <img src="images/GOT.webp" alt="Game of Thrones Book">
-                            <div class="book-info">
-                                <p class="book-title">Game of Thrones</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £30</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png"alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Book Card 3 -->
-                        <div class="book-card">
-                            <img src="images/M.jpg" alt="Matilda Book">
-                            <div class="book-info">
-                                <p class="book-title">Matilda</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £20</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                         <!-- Book Card 4 -->
-                         <div class="book-card">
-                            <img src="images/Dwk.jpg" alt="DWK Book">
-                            <div class="book-info">
-                                <p class="book-title">Diary of the Wimpy Kid</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £25</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+		<div class="col-md-2">
+			<div class="card col-md-13"> 
+				<img src="<?php echo $book['bimage']; ?>">
+				
+				<div class="card-body">
+					<h5 class="card-title"><?php echo $book['bname']; ?></h5>
+					<p class="card-text"><?php echo $book['bauthor']; ?></p>
+					<p class="card-price">LKR : <?php echo $book['bprice']; ?>.00/=</p>
+					<div class="">
+						<?php if (!$isInCart): ?>
+							<form action="" method="POST">
+								<input type="hidden" name="bookID" value="<?php echo $book['bookID']; ?>"/>
+								<input type="submit" class="btn btn-primary" value="Add to cart" name="add_to_cart">
+							</form>
+						<?php else: ?>
+								<input type="submit" class="btn btn-danger" value="Added" name="add_to_cart" disabled>
+						<?php endif; ?>
 
-                        <!-- Book Card 5 -->
-                        <div class="book-card">
-                            <img src="images/Mer.jpg" alt="Merlin Book">
-                            <div class="book-info">
-                                <p class="book-title">Merlin</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                          <!-- Book Card 6 -->
-                          <div class="book-card">
-                            <img src="images/BL.jpeg" alt="BL Book">
-                            <div class="book-info">
-                                <p class="book-title">Business Law</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                         <!-- Book Card 7 -->
-                         <div class="book-card">
-                            <img src="images/KA.jpg" alt="KA Book">
-                            <div class="book-info">
-                                <p class="book-title">King Arthur</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £55</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                         <!-- Book Card 8-->
-                         <div class="book-card">
-                            <img src="images/Na.jpg" alt="NA Book">
-                            <div class="book-info">
-                                <p class="book-title">Naruto</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £55</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    
-            
-                    <div class="arrow right-arrow">&#10095;</div> <!-- Right arrow -->
-                </div>
-            </section>
-            
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php endforeach; ?>
+		</div>	  
+	    <div class="more-btn-class">
+	  	<a class="more-btn" href="novels.php" > More </a>
+	    </div>
+	
+	    <br><br><br>
+		
+		<h2 class="category_name">Short Story</h2>
+		<hr class="hr-category">
+		<div class="row">
+			<?php foreach ($booksShort as $book): ?>
+				<?php $isInCart = false; ?>
+				<?php foreach ($cart as $cartItem): ?>
+					<?php if ($book['bookID'] == $cartItem['bookID']): ?>
+						<?php $isInCart = true; ?>
+						<?php break; ?>
+					<?php endif; ?>
+			<?php endforeach; ?>
+			<div class="col-md-2">
+			  	<div class="card  col-md-13"> 
+				<img src="<?php echo $book['bimage']; ?>">
+					
+					<div class="card-body">
+						<h5 class="card-title"><?php echo $book['bname']; ?></h5>
+						<p class="card-text"><?php echo $book['bauthor']; ?></p>
+						<p class="card-price">LKR : <?php echo $book['bprice']; ?>.00/=</p>
+						<div class="">
+							<?php if (!$isInCart): ?>
+							<form action="" method="POST">
+								<input type="hidden" name="bookID" value="<?php echo $book['bookID']; ?>"/>
+								<input type="submit" class="btn btn-primary" value="Add to cart" name="add_to_cart">
+							</form>
+							<?php else: ?>
+								<input type="submit" class="btn btn-danger" value="Added" name="add_to_cart" disabled>
+						<?php endif; ?>
+					</div>
+					</div>
+           	 	</div>
+			</div>
+		<?php endforeach; ?>
+		</div>
+	    <div class="more-btn-class">
+	  	<a class="more-btn" href="shortstory.php" > More </a>
+	  	</div>
+		<br><br><br>
 
 
-             
-
-<!--Book of the day-->
-<section class="book-of-the-day">
-    <div class="book-of-the-day-container">
-        <div class="left-panel">
-            <p>Book<br>of<br>the<br>Day</p>
-        </div>
-        <div class="book-image">
-            <img src="images/sherlock.jpg" alt="Sherlock Holmes Book">
-        </div>
-        <div class="right-panel">
-            <p>Title</p>
-            <p>Price</p>
-            <button class="cart-button">
-                <img src="images/grocery-store.png" alt="Cart Icon">
-            </button>
-        </div>
-    </div>
-</section>
-
-
-             <!--Special Offers Section-->
-             <section class="special-offers">
-                <h2>Special Offers</h2>
-                <p>Up to 30% off</p>
-             </section>
-
-              <!--Hot deals-->
-              <section class="hot-deals">
-                <h2>Hot Deals of the Week</h2>
-                <div class="carousel">
-                    <div class="arrow left-arrow">&#10094;</div> <!-- Left arrow -->
-                    
-                    <div class="carousel-items">
-                        <!-- Book Card 1 -->
-                        <div class="book-card">
-                            <img src="images/sherlock.jpg" alt="Sherlock Holmes Book">
-                            <div class="book-info">
-                                <p class="book-title">Sherlock Holmes</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Book Card 2 -->
-                        <div class="book-card">
-                            <img src="images/GOT.webp" alt="Game of Thrones Book">
-                            <div class="book-info">
-                                <p class="book-title">Game of Thrones</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £30</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Book Card 3 -->
-                        <div class="book-card">
-                            <img src="images/M.jpg" alt="Matilda Book">
-                            <div class="book-info">
-                                <p class="book-title">Matilda</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £20</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                         <!-- Book Card 4 -->
-                         <div class="book-card">
-                            <img src="images/Dwk.jpg" alt="DWK Book">
-                            <div class="book-info">
-                                <p class="book-title">Diary of the Wimpy Kid</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £25</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Book Card 5 -->
-                        <div class="book-card">
-                            <img src="images/Mer.jpg" alt="Merlin Book">
-                            <div class="book-info">
-                                <p class="book-title">Merlin</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                         <!-- Book Card 6 -->
-                         <div class="book-card">
-                            <img src="images/BL.jpeg" alt="BL Book">
-                            <div class="book-info">
-                                <p class="book-title">Business Law</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £35</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                         <!-- Book Card 7 -->
-                         <div class="book-card">
-                            <img src="images/KA.jpg" alt="KA Book">
-                            <div class="book-info">
-                                <p class="book-title">King Arthur</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £55</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Book Card 8-->
-                        <div class="book-card">
-                            <img src="images/Na.jpg" alt="NA Book">
-                            <div class="book-info">
-                                <p class="book-title">Naruto</p>
-                                <div class="book-details">
-                                    <p>ISBN - 13 no:<br>Quantity of stock:<br>Price: £55</p>
-                                    <button class="cart-button">
-                                        <img src="images/grocery-store.png" alt="Cart Icon">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-            
-                    <div class="arrow right-arrow">&#10095;</div> <!-- Right arrow -->
-                </div>
-            </section>
-
-            
-             
-
-            <?php include 'index_footer.php'; ?> 
-
-<script src="js/function.js"></script>
+		<h2 class="category_name">Fantasy</h2>
+		<hr class="hr-category">
+	    <div class="row">
+			<?php foreach ($booksFantacy as $book): ?>
+					<?php $isInCart = false; ?>
+					<?php foreach ($cart as $cartItem): ?>
+						<?php if ($book['bookID'] == $cartItem['bookID']): ?>
+							<?php $isInCart = true; ?>
+							<?php break; ?>
+						<?php endif; ?>
+			<?php endforeach; ?>
+			<div class="col-md-2">
+			  	<div class="card  col-md-13"> 
+				<img src="<?php echo $book['bimage']; ?>">
+					
+					<div class="card-body">
+						<h5 class="card-title"><?php echo $book['bname']; ?></h5>
+						<p class="card-text"><?php echo $book['bauthor']; ?></p>
+						<p class="card-price">LKR : <?php echo $book['bprice']; ?>.00/=</p>
+						<div class="">
+							<?php if (!$isInCart): ?>
+								<form action="" method="POST">
+									<input type="hidden" name="bookID" value="<?php echo $book['bookID']; ?>"/>
+									<input type="submit" class="btn btn-primary" value="Add to cart" name="add_to_cart">
+								</form>
+								<?php else: ?>
+									<input type="submit" class="btn btn-danger" value="Added" name="add_to_cart" disabled>
+							<?php endif; ?>
+					</div>
+					</div>
+           	 	</div>
+			</div>
+		<?php endforeach; ?>
+		</div>
+		<div class="more-btn-class">
+	  	<a class="more-btn" href="fantasy.php" > More </a>
+	  	</div>
+		<br><br><br>
 
 
+		<h2 class="category_name">Thriller</h2>
+		<hr class="hr-category">
+		<div class="row">
+			<?php foreach ($booksThriller as $book): ?>
+						<?php $isInCart = false; ?>
+						<?php foreach ($cart as $cartItem): ?>
+							<?php if ($book['bookID'] == $cartItem['bookID']): ?>
+								<?php $isInCart = true; ?>
+								<?php break; ?>
+							<?php endif; ?>
+			<?php endforeach; ?>
+				<div class="col-md-2">
+					<div class="card  col-md-13"> 
+					<img src="<?php echo $book['bimage']; ?>">
+						
+						<div class="card-body">
+							<h5 class="card-title"><?php echo $book['bname']; ?></h5>
+							<p class="card-text"><?php echo $book['bauthor']; ?></p>
+							<p class="card-price">LKR : <?php echo $book['bprice']; ?>.00/=</p>
+							<div class="">
+								<?php if (!$isInCart): ?>
+									<form action="" method="POST">
+										<input type="hidden" name="bookID" value="<?php echo $book['bookID']; ?>"/>
+										<input type="submit" class="btn btn-primary" value="Add to cart" name="add_to_cart">
+									</form>
+									<?php else: ?>
+										<input type="submit" class="btn btn-danger" value="Added" name="add_to_cart" disabled>
+								<?php endif; ?>
+							</div>
+						</div>
+					</div>
+				</div>
+			<?php endforeach; ?>
+		</div>
+		<div class="more-btn-class">
+	  	<a class="more-btn" href="#" > More </a>
+	  	</div>
+		<br><br><br>
 
+		<h2 class="category_name">Fiction</h2>
+        <hr class="hr-category">
+        <div class="row">
+			<?php foreach ($booksFiction as $book): ?>
+					<?php $isInCart = false; ?>
+					<?php foreach ($cart as $cartItem): ?>
+						<?php if ($book['bookID'] == $cartItem['bookID']): ?>
+							<?php $isInCart = true; ?>
+							<?php break; ?>
+						<?php endif; ?>
+			<?php endforeach; ?>
+			<div class="col-md-2">
+			  	<div class="card  col-md-13"> 
+				<img src="<?php echo $book['bimage']; ?>">
+					
+					<div class="card-body">
+						<h5 class="card-title"><?php echo $book['bname']; ?></h5>
+						<p class="card-text"><?php echo $book['bauthor']; ?></p>
+						<p class="card-price">LKR : <?php echo $book['bprice']; ?>.00/=</p>
+						<div class="">
+							<?php if (!$isInCart): ?>
+								<form action="" method="POST">
+									<input type="hidden" name="bookID" value="<?php echo $book['bookID']; ?>"/>
+									<input type="submit" class="btn btn-primary" value="Add to cart" name="add_to_cart">
+								</form>
+								<?php else: ?>
+									<input type="submit" class="btn btn-danger" value="Added" name="add_to_cart" disabled>
+							<?php endif; ?>
+						</div>
+					</div>
+           	 	</div>
+			</div>
+		<?php endforeach; ?>
+		</div>
+		<div class="more-btn-class">
+	  		<a class="more-btn" href="#" > More </a>
+	  	</div>
+	</div>
+	<br><br><br>
 
+	<!---Jumbotron--->
+    <div class="container">
+        	<h2 class="heading1">Join Millions Of Happy Readers.</h2>
+            <div class="row">
+              	<div class="col-md-4">
+	              	<div class="jumbotron">
+		        		<p class="lead centeralign">"I would tell anyone to just sign up without reservation. I now have more books than I can read in a lifetime."<br><br></p>
+                        <hr class="my-4">
+			    		<div class="centeralign">
+		        			<img src="images/monae.jpg" width="60" height="60" alt="" style="border-radius:50%;"/>
+	          				<p class="lead_author">Mona.e</p>
+						</div>
+      				</div>
+				</div>
+				<div class="col-md-4"> 
+			  		<div class="jumbotron">
+						<p class="lead centeralign">"I actually download several books a week... I would say I’ve saved approximately Rs.6000.00 or more each month using BookMart."</p>
+						<hr class="my-4">
+						<div class="centeralign" >
+							<img src="images/suzie.jpg" width="60" height="60" alt="" style="border-radius:50%;"/> 
+							<p class="lead_author">suzie.r</p>
+						</div>
+		        	</div>
+				</div>
+	      		<div class="col-md-4"> 
+			  		<div class="jumbotron">
+		        		<p class="lead centeralign">"There are series I would have never discovered if it weren’t for BookMart, and I always feel like I got a deal, always."</p><br>
+	          			<hr class="my-4">
+						<div class="centeralign">
+							<img src="images/ellyn.jpg" width="60" height="60" alt="" style="border-radius:50%;"/>
+							<p class="lead_author centeralign ">ellyn W.</p> 
+						</div>
+            		</div>
+				</div>
+      		</div>
+	</div>
 
-        
-
-            
-        </body>
-    </html>
-
+  	<!---Footer--->
+	  <?php include 'footer.php'; ?>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+ 	<script src="js/jquery-3.4.1.min.js"></script>
+	
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/popper.min.js"></script> 
+  <script src="js/bootstrap-4.4.1.js"></script>
+  </body>
+</html>
