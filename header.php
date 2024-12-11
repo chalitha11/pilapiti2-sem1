@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['logoutForm'])) {
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
                         <a class="dropdown-item" href="novels.php">Novels</a> 
                         <a class="dropdown-item" href="shortstory.php">ShortStory</a>
-                        <a class="dropdown-item" href="fantasy.php">Fantasy</a>
+                       
                         
                     </div>
                 </li>
@@ -92,6 +92,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['logoutForm'])) {
                     ?>
                         <li class="nav-item" id="adminPanelLink"> <a class="nav-link text-light" href="AdminPanel.php">&nbsp;Admin Panel</a></li>
                 <?php  } 
+
+                 $isAdmin = false;
+                    if ($_SESSION['user_type']== "Admin") {
+                        $isAdmin = true;
+                    }
+                    if ($isAdmin) {
+                    ?>
+                        <li class="nav-item" id="adminPanelLink"> <a class="nav-link text-light" href="order.php">&nbsp;Orders</a></li>
+                <?php  }
+
+                
                     // if userID = Super Admin ID, display User Panel 
                     if($userID==1){ ?>
                         <li class="nav-item"> <a class="nav-link text-light" href="users.php">User Panel&nbsp;</a> </li>
@@ -105,6 +116,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['logoutForm'])) {
                         }else{
                             echo "<h5 class='text-info'>Mrs.&nbsp;</h5>";
                         }
+
+                
                     ?>
                     <h5 class="text-info">
                         <?php echo $_SESSION['user_name']?>&nbsp;&nbsp;&nbsp;

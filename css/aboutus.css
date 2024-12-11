@@ -7,15 +7,17 @@ body{
     overflow-x: hidden;
 
 }
-.background{
+.background {
     min-height: 100vh;
-    background-image: url("images/bg1.jpg");
-    background-size: 1600px;
-    background-position: 50% 100%;
+    background-image: url('images/bg1.jpg'); /* Relative path */
+    background-size: cover; /* Adjust size to cover entire area */
+    background-position: center; /* Center the image */
     display: flex;
     justify-content: center;
-    align-items:center ;
+    align-items: center;
+    border: 2px solid red; /* Add a border to check rendering */
 }
+
 .background h1{
     color: #f9fcfd;
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7); ;

@@ -1,6 +1,7 @@
 <?php
 @include 'configDatabase.php';
 @include 'header.php';
+
  $userID = $_SESSION['user_id'];
 
  // Fetching All books from the cart where userID = loged userID
@@ -88,7 +89,6 @@ if(isset($_POST['add_to_cart'])){
 		echo '<script>';
 		echo 'alert("add to cart success!");';
 		echo '</script>';
-		header("Location:cart.php");
 	   }
 	   else{
 		echo '<script>';
@@ -96,8 +96,17 @@ if(isset($_POST['add_to_cart'])){
 		echo '</script>';
 	   }
  }
+ 
+// Check if the order success message is set
+if (isset($_SESSION['order_success'])) {
+    echo "<div class='alert alert-success' role='alert'>".$_SESSION['order_success']."</div>";
+    // Unset the session message after displaying it
+    unset($_SESSION['order_success']);
+}
+
 $conn->close();
 ?>
+
 
 <!DOCTYPE html><html lang="en">
   <head>
@@ -162,7 +171,7 @@ $conn->close();
 				<div class="card-body">
 					<h5 class="card-title"><?php echo $book['bname']; ?></h5>
 					<p class="card-text"><?php echo $book['bauthor']; ?></p>
-					<p class="card-price">LKR : <?php echo $book['bprice']; ?>.00/=</p>
+					<p class="card-price">USD : <?php echo $book['bprice']; ?></p>
 					<div class="">
 						<?php if (!$isInCart): ?>
 							<form action="" method="POST">
@@ -201,7 +210,7 @@ $conn->close();
 				<div class="card-body">
 					<h5 class="card-title"><?php echo $book['bname']; ?></h5>
 					<p class="card-text"><?php echo $book['bauthor']; ?></p>
-					<p class="card-price">LKR : <?php echo $book['bprice']; ?>.00/=</p>
+					<p class="card-price">USD : <?php echo $book['bprice']; ?></p>
 					<div class="">
 						<?php if (!$isInCart): ?>
 							<form action="" method="POST">
@@ -242,7 +251,7 @@ $conn->close();
 					<div class="card-body">
 						<h5 class="card-title"><?php echo $book['bname']; ?></h5>
 						<p class="card-text"><?php echo $book['bauthor']; ?></p>
-						<p class="card-price">LKR : <?php echo $book['bprice']; ?>.00/=</p>
+						<p class="card-price">USD : <?php echo $book['bprice']; ?></p>
 						<div class="">
 							<?php if (!$isInCart): ?>
 							<form action="" method="POST">
@@ -282,7 +291,7 @@ $conn->close();
 					<div class="card-body">
 						<h5 class="card-title"><?php echo $book['bname']; ?></h5>
 						<p class="card-text"><?php echo $book['bauthor']; ?></p>
-						<p class="card-price">LKR : <?php echo $book['bprice']; ?>.00/=</p>
+						<p class="card-price">USD : <?php echo $book['bprice']; ?></p>
 						<div class="">
 							<?php if (!$isInCart): ?>
 								<form action="" method="POST">
@@ -304,79 +313,7 @@ $conn->close();
 		<br><br><br>
 
 
-		<h2 class="category_name">Thriller</h2>
-		<hr class="hr-category">
-		<div class="row">
-			<?php foreach ($booksThriller as $book): ?>
-						<?php $isInCart = false; ?>
-						<?php foreach ($cart as $cartItem): ?>
-							<?php if ($book['bookID'] == $cartItem['bookID']): ?>
-								<?php $isInCart = true; ?>
-								<?php break; ?>
-							<?php endif; ?>
-			<?php endforeach; ?>
-				<div class="col-md-2">
-					<div class="card  col-md-13"> 
-					<img src="<?php echo $book['bimage']; ?>">
-						
-						<div class="card-body">
-							<h5 class="card-title"><?php echo $book['bname']; ?></h5>
-							<p class="card-text"><?php echo $book['bauthor']; ?></p>
-							<p class="card-price">LKR : <?php echo $book['bprice']; ?>.00/=</p>
-							<div class="">
-								<?php if (!$isInCart): ?>
-									<form action="" method="POST">
-										<input type="hidden" name="bookID" value="<?php echo $book['bookID']; ?>"/>
-										<input type="submit" class="btn btn-primary" value="Add to cart" name="add_to_cart">
-									</form>
-									<?php else: ?>
-										<input type="submit" class="btn btn-danger" value="Added" name="add_to_cart" disabled>
-								<?php endif; ?>
-							</div>
-						</div>
-					</div>
-				</div>
-			<?php endforeach; ?>
-		</div>
-		<div class="more-btn-class">
-	  	<a class="more-btn" href="#" > More </a>
-	  	</div>
-		<br><br><br>
-
-		<h2 class="category_name">Fiction</h2>
-        <hr class="hr-category">
-        <div class="row">
-			<?php foreach ($booksFiction as $book): ?>
-					<?php $isInCart = false; ?>
-					<?php foreach ($cart as $cartItem): ?>
-						<?php if ($book['bookID'] == $cartItem['bookID']): ?>
-							<?php $isInCart = true; ?>
-							<?php break; ?>
-						<?php endif; ?>
-			<?php endforeach; ?>
-			<div class="col-md-2">
-			  	<div class="card  col-md-13"> 
-				<img src="<?php echo $book['bimage']; ?>">
-					
-					<div class="card-body">
-						<h5 class="card-title"><?php echo $book['bname']; ?></h5>
-						<p class="card-text"><?php echo $book['bauthor']; ?></p>
-						<p class="card-price">LKR : <?php echo $book['bprice']; ?>.00/=</p>
-						<div class="">
-							<?php if (!$isInCart): ?>
-								<form action="" method="POST">
-									<input type="hidden" name="bookID" value="<?php echo $book['bookID']; ?>"/>
-									<input type="submit" class="btn btn-primary" value="Add to cart" name="add_to_cart">
-								</form>
-								<?php else: ?>
-									<input type="submit" class="btn btn-danger" value="Added" name="add_to_cart" disabled>
-							<?php endif; ?>
-						</div>
-					</div>
-           	 	</div>
-			</div>
-		<?php endforeach; ?>
-		</div>
+		
 		<div class="more-btn-class">
 	  		<a class="more-btn" href="#" > More </a>
 	  	</div>
@@ -419,6 +356,8 @@ $conn->close();
 				</div>
       		</div>
 	</div>
+
+	
 
   	<!---Footer--->
 	  <?php include 'footer.php'; ?>

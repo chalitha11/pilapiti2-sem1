@@ -65,14 +65,14 @@ if (isset($_POST['remove'])) {
                             <div>
                                 <p><?php echo $book['bname']; ?></p>
                                 <small><?php echo $book['bauthor']; ?></small><br>
-                                <small>Rs.<?php echo $book['bprice']; ?>.00/=</small>
+                                <small>USD.<?php echo $book['bprice']; ?></small>
                             </div>
                         </div>
                     </td>
                     <td>
                         <input type="number" id="quantity" name="quantity" min="1" value="1" style="width:60px;" onchange="calcTotal(this.value , <?php echo $book['bookID']; ?> , <?php echo $book['bprice']; ?>)" required />
                     </td>
-                    <td><input type="text" id="<?php echo 'Total'.$book['bookID']; ?>" value="<?php echo 'Rs'.$book['bprice'].'.00/='; ?>" style="width:100px;border:none;" disabled/></td>
+                    <td><input type="text" id="<?php echo 'Total'.$book['bookID']; ?>" value="<?php echo '$'.$book['bprice'].''; ?>" style="width:100px;border:none;" disabled/></td>
                     <td>
                         <form action="" method="POST">
                             <div>
@@ -102,7 +102,7 @@ if (isset($_POST['remove'])) {
         var total = quantity * price;
 
         
-        document.getElementById('Total' + bookid).value = "Rs: " + total + ".00/=";
+        document.getElementById('Total' + bookid).value = "$: " + total + "";
     }
 </script>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2024 at 08:07 PM
+-- Generation Time: Dec 10, 2024 at 11:21 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -71,9 +71,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cartID`, `userID`, `bookID`, `quantity`) VALUES
-(15, 3, 11, 1),
-(16, 3, 10, 1),
-(17, 3, 0, 1);
+(33, 3, 11, 1);
 
 -- --------------------------------------------------------
 
@@ -94,27 +92,14 @@ CREATE TABLE `confirm_order` (
   `order_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `orders`
+-- Dumping data for table `confirm_order`
 --
 
-CREATE TABLE `orders` (
-  `order_item_id` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
-  `order_id` int(11) NOT NULL,
-  `uAddress` text NOT NULL,
-  `city` varchar(255) NOT NULL,
-  `state` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL,
-  `pincode` varchar(10) NOT NULL,
-  `bookID` int(11) NOT NULL,
-  `bname` varchar(255) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `unit_price` decimal(10,2) NOT NULL,
-  `sub_total` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `confirm_order` (`order_id`, `userID`, `name`, `number`, `email`, `payment_method`, `uAddress`, `total_books`, `total_price`, `order_date`) VALUES
+(1, 3, 'Kaveesha Manusarani', '0702489820', 'kaveeshamanusaraniG786@gmail.com', 'cash on delivery', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '1', 459.00, '2024-12-10'),
+(2, 3, 'Kaveesha Manusarani', '0702489820', 'kaveeshamanusaraniG786@gmail.com', 'cash on delivery', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '1', 459.00, '2024-12-10'),
+(3, 3, 'Kaveesha Manusarani', '0702489820', 'kaveeshamanusaraniG786@gmail.com', 'Paypal', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '1', 459.00, '2024-12-10');
 
 -- --------------------------------------------------------
 
@@ -180,15 +165,6 @@ ALTER TABLE `confirm_order`
   ADD KEY `userID` (`userID`);
 
 --
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`order_item_id`),
-  ADD KEY `userID` (`userID`),
-  ADD KEY `order_id` (`order_id`),
-  ADD KEY `bookID` (`bookID`);
-
---
 -- Indexes for table `payments`
 --
 ALTER TABLE `payments`
@@ -210,25 +186,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `confirm_order`
 --
 ALTER TABLE `confirm_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -251,14 +221,6 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `confirm_order`
   ADD CONSTRAINT `confirm_order_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
-
---
--- Constraints for table `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `confirm_order` (`order_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`bookID`) REFERENCES `book` (`bookID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `payments`

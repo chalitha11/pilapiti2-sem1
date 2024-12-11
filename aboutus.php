@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="aboutus.css" class="rel">
+    <link rel="stylesheet" href="css\aboutus.css" class="rel">
 </head>
 <body>
     <!-- header -->
     <?php include 'header.php'; ?>
     
-    <section class="background">
+    <section class="background" >
         <h1>About Us</h1>
     </section>
     <section class="about">
@@ -20,7 +20,8 @@
         <p>Navigating our user-friendly platform, you'll discover not only an impressive array of titles but also personalized recommendations tailored to your literary preferences. We embrace technology to enhance your reading experience, offering e-books, audiobooks, and more, making literature accessible to readers across the globe.</p>
         <p>At the heart of our Online Bookstore is a commitment to fostering a culture of intellectual curiosity and lifelong learning. Whether you're a seasoned bookworm or a casual reader, our goal is to be your trusted companion on your literary journey. Join us in celebrating the boundless joy of reading—where each page turned is an adventure, and every book becomes a cherished companion. Thank you for choosing [Your Online Bookstore] as your literary destination. Happy reading!</p>
     </section>
-    <!-- <script src="js/aboutus.js"></script> -->
+    
+    <script src="js/aboutus.js"></script>
 
     <!-- footer -->
     <?php include 'footer.php'; ?>

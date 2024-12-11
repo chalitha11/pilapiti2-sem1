@@ -147,6 +147,8 @@ $conn->close();
     <link href="css/AdminPanel.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
 </head>
 
 <body>
@@ -208,9 +210,7 @@ $conn->close();
                                             <select id="btype" name="btype" id="btype">
                                                 <option value="Novels">Novels</option>
                                                 <option value="ShortStory">Short story</option>
-                                                <option value="Thriller">Thriller</option>
-                                                <option value="Fantasy">Fantasy</option>
-                                                <option value="Fiction">Fiction</option>
+                                               
                                             </select>
                                         </div>
                                     </div>
@@ -246,6 +246,9 @@ $conn->close();
             </div>
         </div>
     </div>
+
+
+
     <br><br>
     <div class="row">
         <div class="container">
