@@ -194,7 +194,6 @@ button:hover {
         <label for="payment_method">Payment Method:</label>
         <select id="payment_method" name="payment_method" required>
             <option value="cash on delivery">Cash on Delivery</option>
-            <option value="Card payment">Card Payment</option>
         </select>
 
         <label for="uAddress">Address:</label>
@@ -210,9 +209,11 @@ button:hover {
         </div>
 
         <input type="hidden" name="amount" value="<?php echo $totalAmount; ?>">
+
         <button type="submit" name="checkout">Place Order</button>
     </form>
 </div>
+
 
 </body>
 </html>
