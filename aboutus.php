@@ -10,7 +10,7 @@
     <!-- header -->
     <?php include 'header.php'; ?>
     
-    <section class="background" >
+    <section class="background">
         <h1>About Us</h1>
     </section>
     <section class="about">

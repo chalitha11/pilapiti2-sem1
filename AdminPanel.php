@@ -210,6 +210,7 @@ $conn->close();
                                             <select id="btype" name="btype" id="btype">
                                                 <option value="Novels">Novels</option>
                                                 <option value="ShortStory">Short story</option>
+                                                <option value="Fantasy">Fantasy</option>
                                                
                                             </select>
                                         </div>
