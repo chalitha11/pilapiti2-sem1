@@ -95,7 +95,7 @@ $conn->close();
 						<div class="card-body">
 							<h5 class="card-title"><?php echo $book['bname']; ?></h5>
 							<p class="card-text"><?php echo $book['bauthor']; ?></p>
-							<p class="card-price">LKR : <?php echo $book['bprice']; ?>.00/=</p>
+							<p class="card-price">£: <?php echo $book['bprice']; ?></p>
 							<div class="">
 								<?php if (!$isInCart): ?>
 									<form action="" method="POST">

@@ -171,7 +171,7 @@ $conn->close();
 				<div class="card-body">
 					<h5 class="card-title"><?php echo $book['bname']; ?></h5>
 					<p class="card-text"><?php echo $book['bauthor']; ?></p>
-					<p class="card-price">USD : <?php echo $book['bprice']; ?></p>
+					<p class="card-price">£ : <?php echo $book['bprice']; ?></p>
 					<div class="">
 						<?php if (!$isInCart): ?>
 							<form action="" method="POST">
@@ -210,7 +210,7 @@ $conn->close();
 				<div class="card-body">
 					<h5 class="card-title"><?php echo $book['bname']; ?></h5>
 					<p class="card-text"><?php echo $book['bauthor']; ?></p>
-					<p class="card-price">USD : <?php echo $book['bprice']; ?></p>
+					<p class="card-price">£: <?php echo $book['bprice']; ?></p>
 					<div class="">
 						<?php if (!$isInCart): ?>
 							<form action="" method="POST">
@@ -251,7 +251,7 @@ $conn->close();
 					<div class="card-body">
 						<h5 class="card-title"><?php echo $book['bname']; ?></h5>
 						<p class="card-text"><?php echo $book['bauthor']; ?></p>
-						<p class="card-price">USD : <?php echo $book['bprice']; ?></p>
+						<p class="card-price">£ : <?php echo $book['bprice']; ?></p>
 						<div class="">
 							<?php if (!$isInCart): ?>
 							<form action="" method="POST">
@@ -273,9 +273,7 @@ $conn->close();
 		<br><br><br>
 
 
-		<h2 class="category_name">Fantasy</h2>
-		<hr class="hr-category">
-	    <div class="row">
+		
 			<?php foreach ($booksFantacy as $book): ?>
 					<?php $isInCart = false; ?>
 					<?php foreach ($cart as $cartItem): ?>
@@ -291,7 +289,7 @@ $conn->close();
 					<div class="card-body">
 						<h5 class="card-title"><?php echo $book['bname']; ?></h5>
 						<p class="card-text"><?php echo $book['bauthor']; ?></p>
-						<p class="card-price">USD : <?php echo $book['bprice']; ?></p>
+						<p class="card-price">£ : <?php echo $book['bprice']; ?></p>
 						<div class="">
 							<?php if (!$isInCart): ?>
 								<form action="" method="POST">
@@ -307,18 +305,7 @@ $conn->close();
 			</div>
 		<?php endforeach; ?>
 		</div>
-		<div class="more-btn-class">
-	  	<a class="more-btn" href="fantasy.php" > More </a>
-	  	</div>
-		<br><br><br>
-
-
 		
-		<div class="more-btn-class">
-	  		<a class="more-btn" href="#" > More </a>
-	  	</div>
-	</div>
-	<br><br><br>
 
 	<!---Jumbotron--->
     <div class="container">
