@@ -323,7 +323,7 @@ $conn->close();
 				</div>
 				<div class="col-md-4"> 
 			  		<div class="jumbotron">
-						<p class="lead centeralign">"I actually download several books a week... I would say I’ve saved approximately Rs.6000.00 or more each month using BookMart."</p>
+						<p class="lead centeralign">"I actually download several books a week... I would say I’ve saved approximately £600.00 or more each month using BookMart."</p>
 						<hr class="my-4">
 						<div class="centeralign" >
 							<img src="images/suzie.jpg" width="60" height="60" alt="" style="border-radius:50%;"/> 
