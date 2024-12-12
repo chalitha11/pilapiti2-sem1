@@ -32,7 +32,7 @@
                 <dl>
                     <dd><a href="novels.php" >&ensp;Novels</a> </dd>
                     <dd><a href="shortstory.php">&ensp;ShortStory</a></dd>
-                    
+                    <dd><a href="fantacy.php">&ensp;Fantasy</a></dd>
                     		
                 </dl>
             </div>
@@ -48,8 +48,8 @@
             <div class="col-md-4"> 
                 <dl>
                 <h6 class="bg-light text-dark">CONTACT US</h6>
-                    <dd>&ensp;No. 14, Moorfields, Leicester</dd>
-                    <dd>&ensp;07400371815</dd>
+                    <dd>&ensp;No.21, Stanly road, Nugegoda.</dd>
+                    <dd>&ensp;+94 112 456 456</dd>
                     <dd>&ensp;bookmart@gmail.com</dd>
                 </dl>
             </div>
