@@ -4,7 +4,7 @@
 function sanitizeInput($data)
 {
     global $conn;  // Access the global connection variable
-    $data = trim($data);
+    $data = trim($data);//
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $conn->real_escape_string($data);
