@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['logoutForm'])) {
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
                         <a class="dropdown-item" href="novels.php">Novels</a> 
                         <a class="dropdown-item" href="shortstory.php">ShortStory</a>
-                       
+                        <a class="dropdown-item" href="fantasy.php">Fantasy</a>
                         
                     </div>
                 </li>

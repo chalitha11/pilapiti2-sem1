@@ -9,7 +9,7 @@
     $Users = [];
     if ($resultAllUser->num_rows > 0) {
         while ($rowUser = $resultAllUser->fetch_assoc()) {
-            $Users[] = $rowUser;//c
+            $Users[] = $rowUser;
         }
     }
 
