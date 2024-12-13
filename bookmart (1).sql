@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2024 at 11:21 PM
+-- Generation Time: Dec 13, 2024 at 01:38 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,17 +41,16 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`bookID`, `bname`, `bauthor`, `bprice`, `btype`, `bimage`) VALUES
-(0, 'Book 5', 'Ashen', 2345.00, 'Novels', 'images/Novels/20241209134719.jpg'),
-(1, 'Book 1', 'Author 1', 500.00, 'Novels', 'images/Novels/book1.jpg'),
-(2, 'Book 2', 'Author 2', 750.00, 'Thriller', 'images/Thriller/book2.jpg'),
-(3, 'Book 3', 'Author 3', 300.00, 'Fiction', 'images/Fiction/book3.jpg'),
-(7, 'ashen', 'Ashen', 670.00, 'Thriller', 'images/Thriller/20241209081641.jpg'),
-(8, 'ashen2', 'Ashen1', 234.00, 'ShortStory', 'images/ShortStory/20241209091623.jpg'),
-(9, 'ashen2', 'Ashen1', 234.00, 'ShortStory', 'images/ShortStory/20241209091639.jpg'),
-(10, 'ashen', 'Ashen1', 456.00, 'Novels', 'images/Novels/20241209093149.jpg'),
-(11, 'ashen', 'Ashen1', 70.00, 'Novels', 'images/Novels/20241209094107.jpg'),
-(12312304, 'Book 5', 'opiposad', 39.00, 'ShortStory', 'images/ShortStory/20241209140511.jpg'),
-(1234556547, 'adfdsgs', '234', 567.00, 'Fantasy', 'images/Fantasy/20241209140618.jpg');
+(7448031, 'Game of Throne', 'George R.R. Martin', 25.00, 'Novels', 'images/Novels/20241213131439.jpg'),
+(8182221, 'The adventures of Sherlock Holmes', 'Arthur Conan Doyle', 15.00, 'Novels', 'images/Novels/20241213131659.jpg'),
+(8564833, 'Forget me not', 'Julie Soto', 16.00, 'ShortStory', 'images/ShortStory/20241213131855.jpg'),
+(140327592, 'Matilda', 'Dahl, Roald', 18.00, 'Novels', 'images/Novels/20241213132024.jpg'),
+(141364726, 'Diary of a Wimpy kid: Old School', 'Jeff Kinney', 13.00, 'ShortStory', 'images/ShortStory/20241213132225.jpg'),
+(316737372, 'How to train your dragon', 'Cressida Cowell', 25.00, 'ShortStory', 'images/ShortStory/20241213132503.jpg'),
+(770430074, 'Life of Pi', 'Yann Martel', 21.00, 'Novels', 'images/Novels/20241213132639.jpg'),
+(1421530546, 'Pokemon Adevnture : VOL1', 'Hindenori Kusaka', 24.00, 'ShortStory', 'images/ShortStory/20241213132850.jpg'),
+(1569319006, 'Naruto : VOL 1', 'Masashi Kishimoto', 19.00, 'ShortStory', 'images/ShortStory/20241213133107.jpg'),
+(1603095020, 'Animal Stories', 'Maria Hoey, Peter Hoey', 15.00, 'Novels', 'images/Novels/20241213133308.jpg');
 
 -- --------------------------------------------------------
 
@@ -71,7 +70,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cartID`, `userID`, `bookID`, `quantity`) VALUES
-(33, 3, 11, 1);
+(43, 5, 140327592, 1),
+(44, 4, 770430074, 1);
 
 -- --------------------------------------------------------
 
@@ -99,7 +99,21 @@ CREATE TABLE `confirm_order` (
 INSERT INTO `confirm_order` (`order_id`, `userID`, `name`, `number`, `email`, `payment_method`, `uAddress`, `total_books`, `total_price`, `order_date`) VALUES
 (1, 3, 'Kaveesha Manusarani', '0702489820', 'kaveeshamanusaraniG786@gmail.com', 'cash on delivery', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '1', 459.00, '2024-12-10'),
 (2, 3, 'Kaveesha Manusarani', '0702489820', 'kaveeshamanusaraniG786@gmail.com', 'cash on delivery', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '1', 459.00, '2024-12-10'),
-(3, 3, 'Kaveesha Manusarani', '0702489820', 'kaveeshamanusaraniG786@gmail.com', 'Paypal', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '1', 459.00, '2024-12-10');
+(3, 3, 'Kaveesha Manusarani', '0702489820', 'kaveeshamanusaraniG786@gmail.com', 'Paypal', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '1', 459.00, '2024-12-10'),
+(10, 3, 'Kaveesha Manusarani', '0702489820', 'kaveeshamanusaraniG786@gmail.com', 'cash on delivery', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '1', 73.00, '2024-12-12'),
+(11, 3, 'Kaveesha Manusarani', '0702489820', 'kaveeshamanusaraniG786@gmail.com', 'cash on delivery', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '2', 530.00, '2024-12-12'),
+(12, 3, 'Kaveesha Manusarani', '0702489820', 'kaveeshamanusaraniG786@gmail.com', 'cash on delivery', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '2', 530.00, '2024-12-12'),
+(13, 4, 'customer1', '0702489820', 'customer1@gmail.com', 'cash on delivery', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '1', 73.00, '2024-12-12'),
+(14, 4, 'customer1', '0702489820', 'customer1@gmail.com', 'cash on delivery', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '2', 141.00, '2024-12-13'),
+(15, 3, 'Kaveesha Manusarani', '0702489820', 'kaveeshamanusaraniG786@gmail.com', 'cash on delivery', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '0', 0.00, '2024-12-13'),
+(16, 3, 'Kaveesha Manusarani', '0702489820', 'kaveeshamanusaraniG786@gmail.com', 'cash on delivery', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '1', 73.00, '2024-12-13'),
+(17, 4, 'customer1', '0702489820', 'customer1@gmail.com', 'cash on delivery', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '2', 141.00, '2024-12-13'),
+(18, 4, 'customer1', '0702489820', 'customer1@gmail.com', 'cash on delivery', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '2', 141.00, '2024-12-13'),
+(19, 4, 'customer1', '0702489820', 'customer1@gmail.com', 'cash on delivery', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '2', 141.00, '2024-12-13'),
+(20, 5, 'admin', '0702489820', 'admin@gmail.com', 'cash on delivery', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '1', 73.00, '2024-12-13'),
+(21, 4, 'customer1', '0741111315', 'customer1@gmail.com', 'cash on delivery', '16, pine Avenue', '2', 141.00, '2024-12-13'),
+(22, 4, 'customer1', '0741111315', 'customer1@gmail.com', 'cash on delivery', '16, pine Avenue', '1', 26.00, '2024-12-13'),
+(23, 4, 'customer1', '0741111315', 'customer1@gmail.com', 'cash on delivery', '16, Pine Avenue', '1', 24.00, '2024-12-13');
 
 -- --------------------------------------------------------
 
@@ -138,7 +152,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `email`, `uname`, `contactNo`, `uAddress`, `password`, `gender`, `userType`) VALUES
-(3, 'kaveeshamanusaraniG786@gmail.com', 'Kaveesha Manusarani', '0702489820', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '$2y$10$Sv9ibuwRHaZ3CzDlrUuQL.1uqMTyn1RppZb2wrjUbQiqhJb8KxAAW', 'Female', 'Admin');
+(3, 'kaveeshamanusaraniG786@gmail.com', 'Kaveesha Manusarani', '0702489820', '335/1,Neelammahara raod, Godigamuwa,Maharagama', '$2y$10$Sv9ibuwRHaZ3CzDlrUuQL.1uqMTyn1RppZb2wrjUbQiqhJb8KxAAW', 'Female', 'User'),
+(4, 'customer1@gmail.com', 'customer1', '0740151481', '16, Pine Avenue', '$2y$10$Df2upQkm4tf.bwGtBaIx7.9gAdo617B9qli5kcs6Y6C44W4BgOLg6', 'Male', 'User'),
+(5, 'admin@gmail.com', 'admin', '0740031781', '16, Glosflow ST', '$2y$10$0KvfzBB/CeAuWosyeYRIsObn4h.XNWtbj4Zgc0T9cfpFCF3zegF5q', 'Male', 'Admin'),
+(6, 'customer2@gmail.com', 'customer2', '0741111315', '20, Hillwood', '$2y$10$CzZLVX5MB4Qza2bs516J0eSTv00Yz3KhWNHBxJ1sovpZhVCSvxKtq', 'Female', 'User');
 
 --
 -- Indexes for dumped tables
@@ -186,13 +203,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `confirm_order`
 --
 ALTER TABLE `confirm_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `payments`
@@ -204,7 +221,7 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

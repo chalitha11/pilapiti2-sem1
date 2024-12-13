@@ -210,7 +210,7 @@ $conn->close();
                                             <select id="btype" name="btype" id="btype">
                                                 <option value="Novels">Novels</option>
                                                 <option value="ShortStory">Short story</option>
-                                                <option value="Fantasy">Fantasy</option>
+                                                
                                                
                                             </select>
                                         </div>
@@ -289,7 +289,7 @@ $conn->close();
                         echo "</td>";
 
                         echo "<td>" . $book['bauthor'] . "</td>";
-                        echo "<td>" . $book['bprice'] . ".00/=</td>";
+                        echo "<td>£" . $book['bprice'] . "</td>";
                         echo "<td>
                                 <button class='btn btn-warning' onclick='editBook(" . json_encode($book) . ")'>Edit</button>
                                 <a class='btn btn-danger' onclick='return confirm('Are you sure you want to delete this?');' href='AdminPanel.php?delete=".$book['bookID']. "'>

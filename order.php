@@ -91,7 +91,7 @@ $result = $conn->query($sql);
                         <td>{$row['payment_method']}</td>
                         <td>{$row['uAddress']}</td>
                         <td>{$row['total_books']}</td>
-                        <td>\${$row['total_price']}</td>
+                        <td>£{$row['total_price']}</td>
                         <td>{$row['order_date']}</td>
                     </tr>";
                 }

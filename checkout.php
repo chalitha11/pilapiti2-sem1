@@ -203,9 +203,9 @@ button:hover {
         <input type="text" id="total_books" name="total_books" value="<?php echo $totalBooks; ?>" readonly>
 
         <div class="breakdown">
-            <p>Base Price: $<?php echo $totalAmount - $shippingFee; ?></p>
-            <p>Shipping Fee: $<?php echo $shippingFee; ?></p>
-            <p><strong>Total Price: $<?php echo $totalAmount; ?></strong></p>
+            <p>Base Price: £<?php echo $totalAmount - $shippingFee; ?></p>
+            <p>Shipping Fee: £<?php echo $shippingFee; ?></p>
+            <p><strong>Total Price: £<?php echo $totalAmount; ?></strong></p>
         </div>
 
         <input type="hidden" name="amount" value="<?php echo $totalAmount; ?>">

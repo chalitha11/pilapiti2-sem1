@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $gender = sanitizeInput($_POST["gender"]);
       $utype = "User";
 
-      $pattern = '/^(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/';
+      $pattern = '';
 
       // Validate required fields
       if (empty($name) || empty($email) || empty($contactNo) || empty($address) || empty($pw) || empty($gender)) {
@@ -33,11 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           echo '<script>';
           echo 'alert("Password not matched!");';
           echo '</script>';
-      }else if (!preg_match($pattern, $pw)) {
-        echo '<script>';
-        echo 'alert("Password must contain at least one special character and have a minimum length of 8 characters.");';
-        echo '</script>';
-    } else {
+      } else {
         $query = "SELECT * FROM user WHERE email = ? LIMIT 1";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("s", $email);

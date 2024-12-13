@@ -6,7 +6,7 @@
     $queryAllUser = "SELECT * FROM user ORDER BY userID DESC";
     $resultAllUser = $conn->query($queryAllUser);
 
-    $Users = [];//a
+    $Users = [];
     if ($resultAllUser->num_rows > 0) {
         while ($rowUser = $resultAllUser->fetch_assoc()) {
             $Users[] = $rowUser;

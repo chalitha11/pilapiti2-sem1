@@ -65,7 +65,7 @@ if (isset($_POST['remove'])) {
                             <div>
                                 <p><?php echo $book['bname']; ?></p>
                                 <small><?php echo $book['bauthor']; ?></small><br>
-                                <small>USD.<?php echo $book['bprice']; ?></small>
+                                <small>£.<?php echo $book['bprice']; ?></small>
                             </div>
                         </div>
                     </td>
@@ -102,7 +102,7 @@ if (isset($_POST['remove'])) {
         var total = quantity * price;
 
         
-        document.getElementById('Total' + bookid).value = "$: " + total + "";
+        document.getElementById('Total' + bookid).value = "£: " + total + "";
     }
 </script>
 
