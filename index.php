@@ -171,7 +171,7 @@ $conn->close();
 				<div class="card-body">
 					<h5 class="card-title"><?php echo $book['bname']; ?></h5>
 					<p class="card-text"><?php echo $book['bauthor']; ?></p>
-					<p class="card-price">USD : <?php echo $book['bprice']; ?></p>
+					<p class="card-price">£ : <?php echo $book['bprice']; ?></p>
 					<div class="">
 						<?php if (!$isInCart): ?>
 							<form action="" method="POST">
@@ -210,7 +210,7 @@ $conn->close();
 				<div class="card-body">
 					<h5 class="card-title"><?php echo $book['bname']; ?></h5>
 					<p class="card-text"><?php echo $book['bauthor']; ?></p>
-					<p class="card-price">USD : <?php echo $book['bprice']; ?></p>
+					<p class="card-price">£ : <?php echo $book['bprice']; ?></p>
 					<div class="">
 						<?php if (!$isInCart): ?>
 							<form action="" method="POST">
@@ -251,7 +251,7 @@ $conn->close();
 					<div class="card-body">
 						<h5 class="card-title"><?php echo $book['bname']; ?></h5>
 						<p class="card-text"><?php echo $book['bauthor']; ?></p>
-						<p class="card-price">USD : <?php echo $book['bprice']; ?></p>
+						<p class="card-price">£ : <?php echo $book['bprice']; ?></p>
 						<div class="">
 							<?php if (!$isInCart): ?>
 							<form action="" method="POST">
@@ -273,49 +273,12 @@ $conn->close();
 		<br><br><br>
 
 
-		<h2 class="category_name">Fantasy</h2>
-		<hr class="hr-category">
-	    <div class="row">
-			<?php foreach ($booksFantacy as $book): ?>
-					<?php $isInCart = false; ?>
-					<?php foreach ($cart as $cartItem): ?>
-						<?php if ($book['bookID'] == $cartItem['bookID']): ?>
-							<?php $isInCart = true; ?>
-							<?php break; ?>
-						<?php endif; ?>
-			<?php endforeach; ?>
-			<div class="col-md-2">
-			  	<div class="card  col-md-13"> 
-				<img src="<?php echo $book['bimage']; ?>">
-					
-					<div class="card-body">
-						<h5 class="card-title"><?php echo $book['bname']; ?></h5>
-						<p class="card-text"><?php echo $book['bauthor']; ?></p>
-						<p class="card-price">USD : <?php echo $book['bprice']; ?></p>
-						<div class="">
-							<?php if (!$isInCart): ?>
-								<form action="" method="POST">
-									<input type="hidden" name="bookID" value="<?php echo $book['bookID']; ?>"/>
-									<input type="submit" class="btn btn-primary" value="Add to cart" name="add_to_cart">
-								</form>
-								<?php else: ?>
-									<input type="submit" class="btn btn-danger" value="Added" name="add_to_cart" disabled>
-							<?php endif; ?>
-					</div>
-					</div>
-           	 	</div>
-			</div>
-		<?php endforeach; ?>
-		</div>
-		<div class="more-btn-class">
-	  	<a class="more-btn" href="fantasy.php" > More </a>
-	  	</div>
-		<br><br><br>
+		
 
 
 		
-		<div class="more-btn-class">
-	  		<a class="more-btn" href="#" > More </a>
+		<div class="">
+	  		<a class="" href="#" ></a>
 	  	</div>
 	</div>
 	<br><br><br>
@@ -336,7 +299,7 @@ $conn->close();
 				</div>
 				<div class="col-md-4"> 
 			  		<div class="jumbotron">
-						<p class="lead centeralign">"I actually download several books a week... I would say I’ve saved approximately Rs.6000.00 or more each month using BookMart."</p>
+						<p class="lead centeralign">"I actually download several books a week... I would say I’ve saved approximately £.600.00 or more each month using BookMart."</p>
 						<hr class="my-4">
 						<div class="centeralign" >
 							<img src="images/suzie.jpg" width="60" height="60" alt="" style="border-radius:50%;"/> 
