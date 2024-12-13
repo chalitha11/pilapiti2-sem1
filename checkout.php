@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['checkout'])) {
     $stmt->bind_param("isssssids", $userID, $name, $number, $email, $paymentMethod, $uAddress, $totalBooks, $totalPrice, $orderDate);
 
     if ($stmt->execute()) {
-        header("Location: order.php");
+        header("Location: receipt.php");
         exit();
     } else {
         echo "Error: " . $conn->error;
