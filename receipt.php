@@ -50,7 +50,7 @@ $user = $userResult->fetch_assoc();
         .receipt-container {
             max-width: 600px;
             margin: 0 auto;
-            padding: 20px;
+            padding:200px;
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -63,7 +63,7 @@ $user = $userResult->fetch_assoc();
             margin: 20px 0;
         }
         .receipt-details p {
-            margin: 5px 0;
+            margin: 3px 0;
             font-size: 16px;
             color: #555;
         }
