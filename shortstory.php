@@ -39,7 +39,7 @@ if(isset($_POST['add_to_cart'])){
 		echo '<script>';
 		echo 'alert("add to cart success!");';
 		echo '</script>';
-		header("Location: /Book-Mart/cart.php");
+		header("Location: cart.php");
 	   }
 	   else{
 		echo '<script>';
